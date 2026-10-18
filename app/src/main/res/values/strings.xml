@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Todos os textos visíveis do app (pt-BR). Para traduzir, crie values-<idioma>/strings.xml. -->
+<resources>
+    <string name="app_name">Socorre</string>
+    <string name="carregando">Carregando</string>
+    <string name="nenhum">Nenhum</string>
+
+    <!-- Nomes de telas -->
+    <string name="tela_boas_vindas">Boas-vindas</string>
+    <string name="tela_login">Entrar</string>
+    <string name="tela_permissoes">Permissões</string>
+    <string name="tela_perfil">Perfil e ficha médica</string>
+    <string name="tela_contatos">Contatos</string>
+    <string name="tela_inicio">Início</string>
+    <string name="tela_trajeto">Trajeto ativo</string>
+    <string name="tela_historico">Histórico</string>
+    <string name="tela_detalhe">Detalhes</string>
+    <string name="tela_configuracoes">Ajustes</string>
+    <string name="tela_modo_teste">Modo de teste</string>
+    <string name="tela_diagnostico">Diagnóstico de sensores</string>
+
+    <!-- Ações -->
+    <string name="acao_abrir_configuracoes">Abrir configurações</string>
+    <string name="acao_ativar_monitoramento">Ativar monitoramento</string>
+    <string name="acao_pausar_monitoramento">Pausar monitoramento</string>
+    <string name="acao_cancelar">Cancelar</string>
+    <string name="acao_comecar">Começar</string>
+    <string name="acao_concluir">Concluir</string>
+    <string name="acao_continuar">Continuar</string>
+    <string name="acao_encerrar">Encerrar</string>
+    <string name="acao_encerrar_emergencia">Estou seguro, encerrar emergência</string>
+    <string name="acao_enviar">Enviar</string>
+    <string name="acao_excluir">Excluir</string>
+    <string name="acao_iniciar_mesmo_assim">Iniciar mesmo assim</string>
+    <string name="acao_iniciar_trajeto">Iniciar trajeto</string>
+    <string name="acao_ver_trajeto">Ver trajeto em andamento</string>
+    <string name="acao_ok">Entendi</string>
+    <string name="acao_permitir">Permitir</string>
+    <string name="acao_remover">Remover</string>
+    <string name="acao_sair">Sair da conta</string>
+    <string name="acao_salvar">Salvar</string>
+    <string name="acao_ver_mapa">Ver no mapa</string>
+
+    <!-- Status (sempre em texto, nunca só por cor) -->
+    <string name="status_ativo">Monitoramento ativo</string>
+    <string name="status_pausado">Monitoramento pausado</string>
+    <string name="status_emergencia">Emergência em andamento</string>
+    <string name="status_evento_normal">Normal (estou bem)</string>
+    <string name="teste_brusco">Disparar com qualquer movimento brusco</string>
+    <string name="teste_brusco_ajuda">Com o monitoramento ligado, um chacoalhão forte no aparelho abre a tela de socorro na hora, sem esperar a queda completa. O alerta sai como teste (SMS simulado, API recebe normalmente).</string>
+    <string name="status_evento_cancelado">Cancelado (estava tudo bem)</string>
+    <string name="status_evento_enviado">Alerta enviado</string>
+    <string name="status_evento_encerrado">Encerrado</string>
+
+    <!-- Boas-vindas / LGPD -->
+    <string name="boas_vindas_titulo">Bem-vindo ao Socorre</string>
+    <string name="boas_vindas_subtitulo">O Socorre percebe quedas e acidentes e avisa quem você escolher, com a sua localização.</string>
+    <string name="boas_vindas_como_funciona">Como funciona</string>
+    <string name="boas_vindas_passo1">1. Com o monitoramento ativo, os sensores do celular procuram sinais de queda: o celular caindo, sendo jogado, girando ou batendo forte. A tela de socorro abre na hora.</string>
+    <string name="boas_vindas_passo2">2. Se parecer uma queda, o celular toca um alarme e mostra uma contagem de 30 segundos. Se estiver tudo bem, toque em \"Estou bem\".</string>
+    <string name="boas_vindas_passo3">3. Se ninguém cancelar, seus contatos recebem um SMS com o seu nome, o horário e um link do mapa.</string>
+    <string name="boas_vindas_passo4">4. O SMS funciona mesmo sem internet. Você também pode pedir ajuda a qualquer momento segurando o botão vermelho.</string>
+    <string name="boas_vindas_privacidade">Sua privacidade</string>
+    <string name="boas_vindas_privacidade_texto">Usamos sua localização apenas para informar seus contatos em uma emergência e para registrar os trajetos que você iniciar. Dados médicos só são guardados se você autorizar, e só entram no alerta se você permitir. Seus dados ficam protegidos na sua conta e você pode excluir tudo a qualquer momento em Ajustes.</string>
+    <string name="boas_vindas_consentimento">Concordo com o uso da minha localização para avisar meus contatos em caso de emergência.</string>
+
+    <!-- Login -->
+    <string name="login_titulo">Entrar no Socorre</string>
+    <string name="login_subtitulo">Use seu e-mail e senha.</string>
+    <string name="login_email">E-mail</string>
+    <string name="login_senha">Senha</string>
+    <string name="login_entrar">Entrar</string>
+    <string name="login_cadastrar">Criar conta</string>
+    <string name="login_esqueci">Esqueci minha senha</string>
+
+    <!-- Permissões (explicações exibidas ANTES de cada pedido) -->
+    <string name="perm_titulo">Permissões</string>
+    <string name="perm_subtitulo">Explicamos para que serve cada permissão. Se você não permitir, o app continua funcionando, mas com menos recursos.</string>
+    <string name="perm_localizacao_titulo">Localização</string>
+    <string name="perm_localizacao_texto">Precisamos da sua localização para informar aos seus contatos onde você está em caso de emergência.</string>
+    <string name="perm_segundo_plano_titulo">Localização com a tela desligada</string>
+    <string name="perm_segundo_plano_texto">Para enviar sua posição mesmo com o celular bloqueado ou no bolso, escolha \"Permitir o tempo todo\" na próxima tela.</string>
+    <string name="perm_segundo_plano_antes">Permita primeiro a localização acima.</string>
+    <string name="perm_sms_titulo">Envio de SMS</string>
+    <string name="perm_sms_texto">O alerta de emergência é enviado por SMS aos seus contatos, inclusive sem internet. Sem esta permissão nenhum SMS será enviado.</string>
+    <string name="perm_notificacao_titulo">Notificações</string>
+    <string name="perm_notificacao_texto">Mostram que o monitoramento está ligado, a contagem regressiva e os check-ins de segurança.</string>
+    <string name="perm_alarme_titulo">Alarmes no horário exato</string>
+    <string name="perm_alarme_texto">Garante que o check-in \"Está tudo bem?\" apareça na hora certa. Sem isso ele pode atrasar alguns minutos.</string>
+    <string name="perm_tela_cheia_titulo">Alerta em tela cheia</string>
+    <string name="perm_tela_cheia_texto">Permite que a contagem regressiva apareça sobre a tela de bloqueio. Sem isso, ela aparece como notificação.</string>
+    <string name="perm_bateria_titulo">Funcionar em segundo plano</string>
+    <string name="perm_bateria_texto">Alguns celulares desligam apps para economizar bateria. Na próxima tela, escolha \"Socorre\" e marque \"Não otimizar\" para o monitoramento não parar.</string>
+    <string name="perm_fabricante_texto">Celulares Xiaomi, Samsung, Huawei, Motorola e outros têm ajustes extras de bateria. Veja o passo a passo para o seu aparelho.</string>
+    <string name="perm_fabricante_botao">Instruções para o meu celular</string>
+    <string name="perm_concedida">Permitido</string>
+    <string name="perm_pendente">Ainda não permitido</string>
+    <string name="perm_permitir_desc">Permitir %1$s</string>
+    <string name="perm_negada_configuracoes">Permissão negada. Você pode liberar nas configurações do app.</string>
+    <string name="url_dontkillmyapp">https://dontkillmyapp.com/%1$s</string>
+
+    <!-- Perfil e ficha médica -->
+    <string name="perfil_titulo">Seu perfil</string>
+    <string name="perfil_foto">Escolher foto</string>
+    <string name="perfil_foto_desc">Sua foto de perfil</string>
+    <string name="perfil_nome">Nome</string>
+    <string name="perfil_telefone">Seu telefone</string>
+    <string name="perfil_telefone_ajuda">Com DDD. Ex.: 18 99999-0000</string>
+    <string name="perfil_nascimento">Data de nascimento</string>
+    <string name="perfil_atividade">Perfil de atividade</string>
+    <string name="perfil_atividade_ajuda">Ajusta a detecção ao seu dia a dia.</string>
+    <string name="perfil_bicicleta">Bicicleta</string>
+    <string name="perfil_moto">Moto</string>
+    <string name="perfil_casa">Caminhada/Casa</string>
+    <string name="perfil_campo">Trabalho de campo</string>
+    <string name="perfil_ficha_titulo">Ficha médica (opcional)</string>
+    <string name="perfil_ficha_explicacao">Dados de saúde são sensíveis (LGPD). Eles só são guardados se você autorizar abaixo, e só vão no alerta se você ligar a segunda opção.</string>
+    <string name="perfil_ficha_consentimento">Autorizo guardar minha ficha médica</string>
+    <string name="perfil_ficha_compartilhar">Incluir a ficha médica no SMS de emergência</string>
+    <string name="perfil_tipo_sanguineo">Tipo sanguíneo</string>
+    <string name="perfil_tipo_nao_sei">Não sei</string>
+    <string name="perfil_alergias">Alergias</string>
+    <string name="perfil_medicamentos">Medicamentos em uso</string>
+    <string name="perfil_condicoes">Condições de saúde</string>
+
+    <!-- Contatos -->
+    <string name="contatos_titulo">Contatos de emergência</string>
+    <string name="contatos_limite">%1$d de %2$d contatos. O primeiro tem prioridade.</string>
+    <string name="contatos_vazio">Nenhum contato ainda. Adicione pelo menos uma pessoa para poder ativar o monitoramento.</string>
+    <string name="contato_adicionar">Adicionar</string>
+    <string name="contato_editar">Editar contato</string>
+    <string name="contato_importar">Da agenda</string>
+    <string name="contato_nome">Nome</string>
+    <string name="contato_telefone">Telefone</string>
+    <string name="contato_relacao">Relação (ex.: filha, vizinho)</string>
+    <string name="contato_prioridade">%1$dº contato</string>
+    <string name="contato_detalhe">%1$s · %2$s</string>
+    <string name="contato_descricao">%1$dº contato: %2$s, telefone %3$s. Toque para editar.</string>
+    <string name="contato_subir_desc">Aumentar a prioridade de %1$s</string>
+    <string name="contato_descer_desc">Diminuir a prioridade de %1$s</string>
+    <string name="contato_remover_desc">Remover %1$s</string>
+    <string name="contato_testar_desc">Enviar SMS de teste para %1$s</string>
+    <string name="contato_remover_titulo">Remover contato?</string>
+    <string name="contato_remover_texto">%1$s não receberá mais seus alertas.</string>
+    <string name="contato_testar_titulo">Enviar SMS de teste?</string>
+    <string name="contato_testar_texto">Vamos enviar um SMS de teste para %1$s (%2$s) para confirmar o número. Pode haver custo da operadora.</string>
+
+    <!-- Início -->
+    <string name="inicio_perfil_atual">Perfil: %1$s</string>
+    <string name="inicio_perfil_titulo">O que você vai fazer?</string>
+    <string name="inicio_ver_emergencia">Emergência em andamento. Toque para ver.</string>
+    <string name="inicio_aviso_contatos">Cadastre um contato de emergência para ativar o monitoramento.</string>
+    <string name="inicio_aviso_permissoes">Faltam permissões importantes. Toque para revisar.</string>
+    <string name="panico_titulo">SOCORRO</string>
+    <string name="panico_segure">Segure por 3 s</string>
+    <string name="panico_ajuda">Segure o botão vermelho por 3 segundos para avisar seus contatos na hora.</string>
+    <string name="panico_descricao">Botão de pânico. Toque duas vezes e segure por 3 segundos para pedir ajuda.</string>
+    <string name="panico_dica">Para pedir ajuda, mantenha o botão pressionado por 3 segundos.</string>
+
+    <!-- Trajeto -->
+    <string name="trajeto_titulo">Trajeto em andamento</string>
+    <string name="trajeto_nenhum">Nenhum trajeto em andamento. Inicie um trajeto na tela inicial.</string>
+    <string name="trajeto_distancia">Distância</string>
+    <string name="trajeto_duracao">Tempo</string>
+    <string name="trajeto_velocidade">Velocidade agora</string>
+    <string name="trajeto_media">Velocidade média</string>
+    <string name="trajeto_gps_ok">GPS funcionando</string>
+    <string name="trajeto_gps_indisponivel">GPS indisponível: verifique a permissão de localização</string>
+    <string name="trajeto_checkin">Check-in de segurança</string>
+    <string name="trajeto_checkin_ajuda">De tempos em tempos perguntamos \"Está tudo bem?\". Sem resposta em 2 minutos, a contagem de emergência começa.</string>
+    <string name="trajeto_encerrar">Encerrar trajeto</string>
+    <string name="trajeto_encerrar_titulo">Encerrar trajeto?</string>
+    <string name="trajeto_encerrar_texto">O trajeto será salvo no histórico e os check-ins serão desligados. O monitoramento de quedas continua ativo.</string>
+    <string name="checkin_15">15 min</string>
+    <string name="checkin_30">30 min</string>
+    <string name="checkin_60">60 min</string>
+
+    <!-- Clima -->
+    <string name="clima_verificando">Verificando o clima</string>
+    <string name="clima_titulo_aviso">Atenção ao clima</string>
+    <string name="clima_agora">Agora: %1$s, %2$d °C.</string>
+    <string name="clima_chuva">Há chuva na sua região. Pista molhada aumenta o risco de queda.</string>
+    <string name="clima_vento">Vento forte, acima de 40 km/h.</string>
+    <string name="clima_frio">Temperatura muito baixa. Agasalhe-se.</string>
+    <string name="clima_calor">Calor intenso. Leve água e faça pausas.</string>
+    <string name="clima_card_titulo">Clima agora</string>
+    <string name="clima_carregando">Consultando o clima…</string>
+    <string name="clima_resumo">%1$d °C, %2$s, vento de %3$d km/h</string>
+    <string name="clima_sem_avisos">Sem alertas de risco para sair agora.</string>
+    <string name="clima_sem_localizacao">Permita a localização para ver o clima da sua região.</string>
+    <string name="clima_indisponivel">Clima indisponível no momento. Verifique a internet.</string>
+    <string name="clima_trajeto_ok">Trajeto iniciado. Clima: %1$s.</string>
+    <string name="clima_ceu_limpo">céu limpo</string>
+    <string name="clima_nublado">parcialmente nublado</string>
+    <string name="clima_neblina">neblina</string>
+    <string name="clima_garoa">garoa</string>
+    <string name="clima_com_chuva">chuva</string>
+    <string name="clima_neve">neve</string>
+    <string name="clima_tempestade">tempestade</string>
+    <string name="clima_desconhecido">tempo indefinido</string>
+
+    <!-- Contagem regressiva -->
+    <string name="contagem_titulo">Detectamos um possível acidente</string>
+    <string name="contagem_tipo">Motivo: %1$s</string>
+    <string name="contagem_instrucao">Se ninguém responder, seus contatos serão avisados.</string>
+    <string name="contagem_estou_bem">ESTOU BEM</string>
+    <string name="contagem_pedir_ajuda">PEDIR AJUDA AGORA</string>
+    <string name="contagem_enviando">Enviando alerta aos seus contatos…</string>
+    <plurals name="contagem_restante_desc">
+        <item quantity="one">Falta %1$d segundo para avisar seus contatos</item>
+        <item quantity="other">Faltam %1$d segundos para avisar seus contatos</item>
+    </plurals>
+
+    <!-- Alerta enviado -->
+    <string name="alerta_titulo">Alerta enviado</string>
+    <string name="alerta_titulo_teste">Simulação concluída: nada foi enviado</string>
+    <string name="alerta_resumo">%1$s às %2$s</string>
+    <string name="alerta_localizacao_precisao">Localização enviada (precisão de cerca de %1$d m)</string>
+    <string name="alerta_localizacao_indisponivel">Localização indisponível no momento do alerta</string>
+    <string name="alerta_canais">Situação de cada envio</string>
+    <string name="alerta_canal_sms">SMS para os contatos</string>
+    <string name="alerta_canal_api">Central de monitoramento (API Socorro)</string>
+
+    <!-- Status de envio -->
+    <string name="envio_pendente">Aguardando</string>
+    <string name="envio_enviado">Enviado</string>
+    <string name="envio_falhou">Falhou</string>
+    <string name="envio_parcial">Enviado para parte dos contatos</string>
+    <string name="envio_sem_permissao">Não enviado: falta permissão</string>
+    <string name="envio_sem_contatos">Não enviado: nenhum contato cadastrado</string>
+    <string name="envio_nao_configurado">Ainda não configurado</string>
+    <string name="envio_simulado">Simulado (modo de teste)</string>
+    <string name="envio_sms_detalhe">%1$s (%2$d de %3$d confirmados pela operadora)</string>
+    <string name="envio_api_detalhe">%1$s (tentativas: %2$d, último erro: %3$s)</string>
+
+    <!-- Tipos de evento e texto do SMS -->
+    <string name="tipo_queda">Queda</string>
+    <string name="tipo_panico">Botão de pânico</string>
+    <string name="tipo_checkin">Check-in sem resposta</string>
+    <string name="situacao_queda">pode ter sofrido uma queda</string>
+    <string name="situacao_panico">acionou o botão de pânico e precisa de ajuda</string>
+    <string name="situacao_checkin">não respondeu ao check-in de segurança</string>
+    <!-- Marcadores: {nome} {situacao} {tipo} {dataHora} {localizacao} -->
+    <string name="sms_modelo_padrao">ALERTA DE EMERGÊNCIA: {nome} {situacao}. Evento: {tipo}. Horário: {dataHora}. Localização: {localizacao}.</string>
+    <string name="sms_localizacao">%1$s (±%2$d m)</string>
+    <string name="sms_localizacao_indisponivel">indisponível</string>
+    <string name="sms_usuario_sem_nome">Usuário do Socorre</string>
+    <string name="sms_ficha_rotulo">Ficha médica:</string>
+    <string name="sms_teste">Socorre: este é um SMS de teste enviado por %1$s. Você está cadastrado como contato de emergência. Nenhuma ação é necessária.</string>
+
+    <!-- Notificações -->
+    <string name="canal_monitoramento">Monitoramento</string>
+    <string name="canal_emergencia">Emergência</string>
+    <string name="canal_checkin">Check-in de segurança</string>
+    <string name="canal_avisos">Avisos</string>
+    <string name="notif_trajeto_ativo">Trajeto em andamento e monitoramento ativo</string>
+    <string name="notif_acao_panico">Pânico</string>
+    <string name="notif_contagem_titulo">Possível acidente detectado</string>
+    <string name="notif_contagem_titulo_teste">TESTE: possível acidente detectado</string>
+    <plurals name="notif_contagem_texto">
+        <item quantity="one">Seus contatos serão avisados em %1$d segundo.</item>
+        <item quantity="other">Seus contatos serão avisados em %1$d segundos.</item>
+    </plurals>
+    <string name="notif_alerta_texto">Toque para ver a situação dos envios.</string>
+    <string name="checkin_titulo">Está tudo bem?</string>
+    <string name="checkin_texto">Toque em \"Estou bem\" em até 2 minutos.</string>
+    <string name="checkin_estou_bem">Estou bem</string>
+    <string name="boot_falhou_titulo">Monitoramento desligado</string>
+    <string name="boot_falhou_texto">O celular foi reiniciado e o Android não permitiu religar o monitoramento sozinho. Abra o Socorre e toque em \"Ativar monitoramento\".</string>
+
+    <!-- Histórico e detalhes -->
+    <string name="historico_titulo">Histórico</string>
+    <string name="historico_vazio">Nenhum evento ou trajeto registrado ainda.</string>
+    <string name="historico_teste">%1$s (teste)</string>
+    <string name="historico_trajeto">Trajeto de %1$s</string>
+    <string name="historico_trajeto_aberto">Em andamento ou não finalizado</string>
+    <string name="historico_trajeto_duracao">Duração: %1$s</string>
+    <string name="detalhe_titulo">Detalhes</string>
+    <string name="detalhe_mapa_desc">Mapa com o local do evento ou a rota do trajeto</string>
+    <string name="detalhe_mapa_indisponivel">Nenhuma localização registrada para mostrar no mapa.</string>
+    <string name="detalhe_linha">%1$s: %2$s</string>
+    <string name="detalhe_data">Data</string>
+    <string name="detalhe_status">Situação</string>
+    <string name="detalhe_localizacao">Localização</string>
+    <string name="detalhe_precisao">Precisão do GPS</string>
+    <string name="detalhe_bateria">Bateria</string>
+    <string name="detalhe_pico">Pico de impacto</string>
+    <string name="detalhe_rotacao">Rotação</string>
+    <string name="detalhe_altitude">Variação de altitude</string>
+    <string name="detalhe_inicio">Início</string>
+    <string name="detalhe_fim">Fim</string>
+    <string name="detalhe_duracao">Duração</string>
+    <string name="detalhe_media">Velocidade média</string>
+    <string name="detalhe_perfil">Perfil</string>
+    <string name="detalhe_clima">Clima no início</string>
+    <string name="detalhe_eventos">Eventos no trajeto</string>
+
+    <!-- Formatos com unidade -->
+    <string name="formato_km">%1$s km</string>
+    <string name="formato_kmh">%1$s km/h</string>
+    <string name="formato_metros">%1$d m</string>
+    <string name="formato_metros_decimal">%1$s m</string>
+    <string name="formato_porcento">%1$d%%</string>
+    <string name="formato_g">%1$s g</string>
+    <string name="formato_graus">%1$s°</string>
+
+    <!-- Ajustes -->
+    <string name="config_titulo">Ajustes</string>
+    <string name="config_deteccao">Detecção de quedas</string>
+    <string name="config_sensibilidade_perfil">Sensibilidade para o perfil %1$s</string>
+    <string name="config_sensibilidade_ajuda">Alta detecta mais, mas pode gerar mais alarmes falsos. Baixa gera menos alarmes falsos.</string>
+    <string name="sens_baixa">Baixa</string>
+    <string name="sens_media">Média</string>
+    <string name="sens_alta">Alta</string>
+    <string name="config_contagem_valor">Contagem regressiva: %1$d segundos</string>
+    <string name="config_contagem_desc">Tempo da contagem regressiva, de 15 a 60 segundos</string>
+    <string name="config_checkin">Intervalo do check-in</string>
+    <string name="config_mensagem">Mensagem do SMS</string>
+    <string name="config_mensagem_ajuda">Você pode usar: {nome}, {situacao}, {tipo}, {dataHora} e {localizacao}.</string>
+    <string name="config_mensagem_campo">Texto do alerta</string>
+    <string name="config_mensagem_salvar">Salvar mensagem</string>
+    <string name="config_mensagem_restaurar">Restaurar mensagem padrão</string>
+    <string name="config_tema">Aparência</string>
+    <string name="tema_sensor">Automático pela luz do ambiente</string>
+    <string name="tema_sistema">Igual ao celular</string>
+    <string name="tema_claro">Sempre claro</string>
+    <string name="tema_escuro">Sempre escuro</string>
+    <string name="config_mais">Mais opções</string>
+    <string name="config_perfil">Perfil e ficha médica</string>
+    <string name="config_permissoes">Permissões e bateria</string>
+    <string name="config_modo_teste">Modo de teste</string>
+    <string name="config_diagnostico">Diagnóstico de sensores</string>
+    <string name="config_privacidade">Privacidade e dados (LGPD)</string>
+    <string name="config_conta">Conta</string>
+    <string name="config_excluir_conta">Excluir minha conta e meus dados</string>
+    <string name="privacidade_titulo">Privacidade e seus dados</string>
+    <string name="privacidade_texto">O que guardamos: nome, telefone, e-mail, contatos de emergência, eventos (com localização e leituras dos sensores) e trajetos que você iniciar. A ficha médica só é guardada com sua autorização.\n\nPara que usamos: avisar seus contatos em emergências e mostrar seu histórico.\n\nQuem vê: somente você. As regras do banco de dados impedem o acesso de outras pessoas. Os contatos recebem apenas o SMS do alerta.\n\nSeus direitos (LGPD): você pode corrigir seus dados no Perfil e excluir a conta com todos os dados em Ajustes.</string>
+    <string name="conta_sair_titulo">Sair da conta?</string>
+    <string name="conta_sair_texto">O monitoramento será desligado neste celular.</string>
+    <string name="conta_excluir_titulo">Excluir conta e dados?</string>
+    <string name="conta_excluir_texto">Isso apaga permanentemente seu perfil, ficha médica, contatos, eventos e trajetos. Não é possível desfazer.</string>
+
+    <!-- Modo de teste -->
+    <string name="teste_titulo">Modo de teste</string>
+    <string name="teste_aviso">Nenhum SMS ou notificação real será enviado. O registro vai para a API Socorro normalmente, e no app o evento fica marcado como teste.</string>
+    <string name="teste_explicacao">Use para conhecer o fluxo: a contagem aparece, você pode cancelar ou deixar terminar, e no final mostramos exatamente o que seria enviado.</string>
+    <string name="teste_simular_queda">Simular queda</string>
+    <string name="teste_simular_panico">Simular botão de pânico</string>
+    <string name="teste_simular_checkin">Simular check-in sem resposta</string>
+    <string name="teste_faixa">MODO DE TESTE: nada será enviado</string>
+    <string name="teste_previa_titulo">O que seria enviado</string>
+    <string name="teste_previa_sms">Texto do SMS</string>
+    <string name="teste_previa_destinatarios">Destinatários</string>
+    <string name="teste_previa_payload">Dados enviados à API Socorro</string>
+
+    <!-- Diagnóstico -->
+    <string name="diag_titulo">Diagnóstico de sensores</string>
+    <string name="diag_explicacao">Leituras em tempo real para testar o aparelho. Movimente o celular para ver os valores mudarem.</string>
+    <string name="diag_disponiveis">Acelerômetro: %1$s\nGiroscópio: %2$s\nProximidade: %3$s\nBarômetro: %4$s\nLuz ambiente: %5$s</string>
+    <string name="diag_sim">disponível</string>
+    <string name="diag_nao">não disponível</string>
+    <string name="diag_indisponivel">Sensor não disponível neste aparelho</string>
+    <string name="diag_acelerometro">Acelerômetro (m/s²)</string>
+    <string name="diag_acel">x %1$s  y %2$s  z %3$s\nTotal: %4$s g</string>
+    <string name="diag_pico">Maior impacto desde que abriu: %1$s g</string>
+    <string name="diag_zerar_pico">Zerar maior impacto</string>
+    <string name="diag_detector_titulo">Teste do detector de quedas</string>
+    <string name="diag_detector_explicacao">Mesmo algoritmo do monitoramento, rodando só nesta tela (não envia alerta). Para testar: jogue ou deixe o celular cair numa cama ou sofá, ou gire-o uma volta completa. O resultado aparece em cerca de 1 segundo.</string>
+    <string name="diag_det_resumo">Perfil: %1$s (impacto mínimo %2$s g)\nAgora: %3$s\nÚltimo resultado: %4$s\nQuedas confirmadas nesta tela: %5$d</string>
+    <string name="diag_det_aguardando">aguardando queda, giro ou impacto</string>
+    <string name="diag_det_analisando">analisando: impacto de %1$s g, rotação %2$d°</string>
+    <string name="diag_det_silencio">pausa de 3 s após a última queda confirmada</string>
+    <string name="diag_motivo_nenhum">nenhum impacto analisado ainda</string>
+    <string name="diag_motivo_confirmada">QUEDA CONFIRMADA (no monitoramento abriria a contagem)</string>
+    <string name="diag_motivo_rotacao">descartado: pancada sem queda livre nem giro (parece batida, não queda)</string>
+    <string name="diag_motivo_velocidade">descartado: velocidade antes do impacto abaixo do mínimo do perfil</string>
+    <string name="diag_giroscopio">Giroscópio (rad/s)</string>
+    <string name="diag_giro">x %1$s  y %2$s  z %3$s</string>
+    <string name="diag_proximidade_titulo">Proximidade</string>
+    <string name="diag_proximidade">%1$s (%2$s cm)</string>
+    <string name="diag_coberto">Coberto (bolso ou bolsa)</string>
+    <string name="diag_livre">Livre</string>
+    <string name="diag_barometro_titulo">Barômetro</string>
+    <string name="diag_barometro">%1$s hPa (altitude estimada %2$s m)</string>
+    <string name="diag_luz_titulo">Luz ambiente</string>
+    <string name="diag_luz">%1$s lux</string>
+    <string name="diag_gps_titulo">GPS</string>
+    <string name="diag_gps">Permissão: %1$s\nGPS: %2$s</string>
+    <string name="diag_permitido">concedida</string>
+    <string name="diag_nao_permitido">não concedida</string>
+    <string name="diag_ligado">ligado</string>
+    <string name="diag_desligado">desligado</string>
+
+    <!-- Widget -->
+    <string name="widget_nome">Pânico do Socorre</string>
+    <string name="widget_texto">SOCORRO</string>
+    <string name="widget_descricao">Toque para iniciar a contagem de emergência. Você ainda pode cancelar.</string>
+
+    <!-- Mensagens -->
+    <string name="msg_conta_excluida">Conta e dados excluídos.</string>
+    <string name="msg_email_recuperacao">Enviamos um e-mail para você criar uma nova senha.</string>
+    <string name="msg_mensagem_salva">Mensagem salva.</string>
+    <string name="msg_perfil_salvo">Perfil salvo.</string>
+    <string name="msg_sms_teste_enviado">SMS de teste enviado.</string>
+
+    <!-- Erros -->
+    <string name="erro_generico">Algo deu errado. Tente de novo.</string>
+    <string name="erro_sem_internet">Sem conexão com a internet. Verifique e tente de novo.</string>
+    <string name="erro_email_invalido">Digite um e-mail válido.</string>
+    <string name="erro_senha_curta">A senha precisa ter pelo menos 6 caracteres.</string>
+    <string name="erro_senha_fraca">Senha muito fraca. Use letras e números.</string>
+    <string name="erro_email_em_uso">Este e-mail já tem conta. Toque em \"Entrar\".</string>
+    <string name="erro_login_credenciais">E-mail ou senha incorretos.</string>
+    <string name="erro_nome_obrigatorio">Digite o nome.</string>
+    <string name="erro_telefone_invalido">Telefone inválido. Use o DDD e o número.</string>
+    <string name="erro_maximo_contatos">Você já tem 5 contatos, o máximo permitido.</string>
+    <string name="erro_sem_contatos">Cadastre pelo menos um contato de emergência primeiro.</string>
+    <string name="erro_iniciar_monitoramento">Não foi possível ativar o monitoramento. Abra o app e tente de novo.</string>
+    <string name="erro_emergencia_em_andamento">Já existe uma emergência em andamento.</string>
+    <string name="erro_salvar_nuvem">Salvo neste celular. Vamos sincronizar quando houver internet.</string>
+    <string name="erro_sms_teste">Não foi possível enviar o SMS. Verifique a permissão de SMS e o número.</string>
+    <string name="erro_agenda">Não foi possível abrir a agenda.</string>
+    <string name="erro_foto">Não foi possível carregar a foto.</string>
+    <string name="erro_mensagem_vazia">A mensagem não pode ficar vazia.</string>
+    <string name="erro_reautenticar">Por segurança, saia e entre de novo na conta antes de excluí-la.</string>
+    <string name="erro_excluir_conta">Não foi possível excluir a conta. Verifique a internet e tente de novo.</string>
+    <string name="erro_abrir_configuracoes">Não foi possível abrir as configurações. Procure por \"Socorre\" nas configurações do celular.</string>
+    <string name="erro_firebase_nao_configurado">O Firebase ainda não foi configurado neste projeto. Adicione o arquivo google-services.json (veja o README).</string>
+</resources>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/emergencia"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/espaco_grande">
+
+        <TextView
+            android:id="@+id/faixaTeste"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_faixa_teste"
+            android:padding="@dimen/espaco"
+            android:text="@string/teste_faixa"
+            android:textColor="@color/aviso_texto"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/grupoContagem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaco"
+                android:accessibilityHeading="true"
+                android:gravity="center"
+                android:text="@string/contagem_titulo"
+                android:textColor="@color/sobre_emergencia"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textoTipo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/sobre_emergencia"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textoNumero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:textColor="@color/sobre_emergencia"
+                android:textSize="160sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/contagem_instrucao"
+                android:textColor="@color/sobre_emergencia"
+                android:textSize="20sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/botaoPedirAjuda"
+                style="@style/Widget.Socorre.Botao.Contorno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaco_grande"
+                android:minHeight="@dimen/toque_critico"
+                android:text="@string/contagem_pedir_ajuda"
+                android:textColor="@color/sobre_emergencia"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:strokeColor="@color/sobre_emergencia"
+                app:strokeWidth="3dp" />
+
+            <!-- "Estou bem" embaixo: área de alcance do polegar, maior botão da tela. -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/botaoEstouBem"
+                style="@style/Widget.Socorre.Botao.Critico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaco_grande"
+                android:minHeight="112dp"
+                android:text="@string/contagem_estou_bem"
+                android:textColor="@color/emergencia_escura"
+                android:textSize="30sp"
+                app:backgroundTint="@color/sobre_emergencia"
+                app:icon="@drawable/ic_check"
+                app:iconGravity="textStart"
+                app:iconSize="36dp"
+                app:iconTint="@color/emergencia_escura" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/grupoEnviando"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="96dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:indeterminateTint="@color/sobre_emergencia" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaco_grande"
+                android:accessibilityLiveRegion="assertive"
+                android:gravity="center"
+                android:text="@string/contagem_enviando"
+                android:textColor="@color/sobre_emergencia"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

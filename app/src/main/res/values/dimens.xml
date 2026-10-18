@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toque_minimo">48dp</dimen>
+    <dimen name="toque_padrao">56dp</dimen>
+    <dimen name="toque_critico">80dp</dimen>
+    <dimen name="panico">176dp</dimen>
+    <dimen name="margem">16dp</dimen>
+    <dimen name="espaco">12dp</dimen>
+    <dimen name="espaco_grande">24dp</dimen>
+</resources>

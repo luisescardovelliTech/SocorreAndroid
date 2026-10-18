@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="fundo">#0B0F14</color>
+    <color name="superficie">#151B23</color>
+    <color name="superficie_variante">#1F2732</color>
+    <color name="texto">#F3F4F6</color>
+    <color name="texto_secundario">#C9CED6</color>
+    <color name="contorno">#8B95A3</color>
+
+    <color name="primaria">#93C5FD</color>
+    <color name="sobre_primaria">#0B1B3A</color>
+    <color name="primaria_container">#1E3A8A</color>
+    <color name="sobre_primaria_container">#DBEAFE</color>
+
+    <color name="ativo">#15803D</color>
+    <color name="ativo_container">#14532D</color>
+    <color name="ativo_texto">#DCFCE7</color>
+
+    <color name="pausado">#4B5563</color>
+    <color name="pausado_container">#374151</color>
+    <color name="pausado_texto">#F3F4F6</color>
+
+    <color name="emergencia">#B91C1C</color>
+    <color name="emergencia_escura">#7F1D1D</color>
+    <color name="sobre_emergencia">#FFFFFF</color>
+    <color name="sobre_estado">#FFFFFF</color>
+    <color name="emergencia_container">#7F1D1D</color>
+    <color name="emergencia_texto">#FEE2E2</color>
+
+    <color name="aviso_container">#78350F</color>
+    <color name="aviso_texto">#FEF3C7</color>
+
+    <color name="rota">#60A5FA</color>
+</resources>

@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margem">
+
+        <TextView
+            android:id="@+id/textoTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityHeading="true"
+            android:text="@string/config_titulo"
+            android:textAppearance="@style/TextAppearance.Socorre.Titulo" />
+
+        <ProgressBar
+            android:id="@+id/progresso"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/carregando"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco_grande"
+            android:accessibilityHeading="true"
+            android:text="@string/config_deteccao"
+            android:textAppearance="@style/TextAppearance.Socorre.Secao" />
+
+        <TextView
+            android:id="@+id/textoSensibilidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:textAppearance="@style/TextAppearance.Socorre.Corpo" />
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/grupoSensibilidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/botaoSensBaixa"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="@dimen/toque_padrao"
+                android:text="@string/sens_baixa"
+                android:textSize="17sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/botaoSensMedia"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="@dimen/toque_padrao"
+                android:text="@string/sens_media"
+                android:textSize="17sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/botaoSensAlta"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="@dimen/toque_padrao"
+                android:text="@string/sens_alta"
+                android:textSize="17sp" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/config_sensibilidade_ajuda"
+            android:textAppearance="@style/TextAppearance.Socorre.Apoio" />
+
+        <TextView
+            android:id="@+id/textoContagem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco_grande"
+            android:textAppearance="@style/TextAppearance.Socorre.Corpo" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderContagem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/config_contagem_desc"
+            android:stepSize="5"
+            android:valueFrom="15"
+            android:valueTo="60" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco_grande"
+            android:accessibilityHeading="true"
+            android:text="@string/config_checkin"
+            android:textAppearance="@style/TextAppearance.Socorre.Secao" />
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/grupoCheckin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/botaoCheckin15"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="@dimen/toque_padrao"
+                android:text="@string/checkin_15"
+                android:textSize="17sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/botaoCheckin30"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="@dimen/toque_padrao"
+                android:text="@string/checkin_30"
+                android:textSize="17sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/botaoCheckin60"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="@dimen/toque_padrao"
+                android:text="@string/checkin_60"
+                android:textSize="17sp" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco_grande"
+            android:accessibilityHeading="true"
+            android:text="@string/config_mensagem"
+            android:textAppearance="@style/TextAppearance.Socorre.Secao" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/config_mensagem_ajuda"
+            android:textAppearance="@style/TextAppearance.Socorre.Apoio" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:hint="@string/config_mensagem_campo">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campoMensagem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine|textCapSentences"
+                android:minLines="3"
+                android:textSize="17sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botaoSalvarMensagem"
+            style="@style/Widget.Socorre.Botao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/config_mensagem_salvar" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botaoRestaurarMensagem"
+            style="@style/Widget.Socorre.Botao.Texto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/config_mensagem_restaurar" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco_grande"
+            android:accessibilityHeading="true"
+            android:text="@string/config_tema"
+            android:textAppearance="@style/TextAppearance.Socorre.Secao" />
+
+        <RadioGroup
+            android:id="@+id/grupoTema"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioTemaSensor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/toque_minimo"
+                android:text="@string/tema_sensor"
+                android:textSize="17sp" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioTemaSistema"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/toque_minimo"
+                android:text="@string/tema_sistema"
+                android:textSize="17sp" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioTemaClaro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/toque_minimo"
+                android:text="@string/tema_claro"
+                android:textSize="17sp" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioTemaEscuro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/toque_minimo"
+                android:text="@string/tema_escuro"
+                android:textSize="17sp" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco_grande"
+            android:accessibilityHeading="true"
+            android:text="@string/config_mais"
+            android:textAppearance="@style/TextAppearance.Socorre.Secao" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botaoPerfil"
+            style="@style/Widget.Socorre.Botao.Contorno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/config_perfil"
+            app:icon="@drawable/ic_pessoa" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botaoPermissoes"
+            style="@style/Widget.Socorre.Botao.Contorno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/config_permissoes"
+            app:icon="@drawable/ic_escudo" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botaoModoTeste"
+            style="@style/Widget.Socorre.Botao.Contorno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/config_modo_teste"
+            app:icon="@drawable/ic_check" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botaoDiagnostico"
+            style="@style/Widget.Socorre.Botao.Contorno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/config_diagnostico"
+            app:icon="@drawable/ic_config" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botaoPrivacidade"
+            style="@style/Widget.Socorre.Botao.Contorno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/config_privacidade"
+            app:icon="@drawable/ic_aviso" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco_grande"
+            android:accessibilityHeading="true"
+            android:text="@string/config_conta"
+            android:textAppearance="@style/TextAppearance.Socorre.Secao" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botaoSair"
+            style="@style/Widget.Socorre.Botao.Contorno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/acao_sair" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botaoExcluirConta"
+            style="@style/Widget.Socorre.Botao.Texto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/config_excluir_conta" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

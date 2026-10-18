@@ -1,0 +1,11 @@
+# Regras para quando a otimização (R8) for ligada no build de release.
+
+# Modelos lidos/gravados por reflexão (Firestore e Gson)
+-keep class com.luistech.socorre.domain.modelo.** { *; }
+-keep class com.luistech.socorre.weather.ServicoClima$Cache { *; }
+
+# Retrofit / OkHttp
+-keepattributes Signature, *Annotation*, Exceptions
+-dontwarn okhttp3.**
+-dontwarn retrofit2.**
+-keep,allowobfuscation interface com.luistech.socorre.data.api.**

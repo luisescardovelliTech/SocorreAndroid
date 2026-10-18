@@ -1,0 +1,15 @@
+rules_version = '2';
+// Cada usuário autenticado lê e escreve somente os próprios dados: users/{uid}/**
+// Publicar: Firebase Console > Firestore > Regras, ou `firebase deploy --only firestore:rules`.
+// App Check (Play Integrity) é exigido pelo próprio console ao ativar a "Aplicação" do App Check
+// para o Cloud Firestore; as regras abaixo continuam valendo junto com ele.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /users/{uid}/{document=**} {
+      allow read, write:
+        if request.auth != null
+        && request.auth.uid == uid;
+    }
+  }
+}

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margem">
+
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/espaco_grande"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_escudo"
+            app:tint="@color/primaria" />
+
+        <TextView
+            android:id="@+id/textoTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityHeading="true"
+            android:gravity="center"
+            android:text="@string/boas_vindas_titulo"
+            android:textAppearance="@style/TextAppearance.Socorre.Titulo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/boas_vindas_subtitulo"
+            android:textAppearance="@style/TextAppearance.Socorre.Corpo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco_grande"
+            android:accessibilityHeading="true"
+            android:text="@string/boas_vindas_como_funciona"
+            android:textAppearance="@style/TextAppearance.Socorre.Secao" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/boas_vindas_passo1"
+            android:textAppearance="@style/TextAppearance.Socorre.Corpo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/boas_vindas_passo2"
+            android:textAppearance="@style/TextAppearance.Socorre.Corpo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/boas_vindas_passo3"
+            android:textAppearance="@style/TextAppearance.Socorre.Corpo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/boas_vindas_passo4"
+            android:textAppearance="@style/TextAppearance.Socorre.Corpo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco_grande"
+            android:accessibilityHeading="true"
+            android:text="@string/boas_vindas_privacidade"
+            android:textAppearance="@style/TextAppearance.Socorre.Secao" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/boas_vindas_privacidade_texto"
+            android:textAppearance="@style/TextAppearance.Socorre.Apoio" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkConsentimento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:minHeight="@dimen/toque_minimo"
+            android:text="@string/boas_vindas_consentimento"
+            android:textSize="17sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botaoComecar"
+            style="@style/Widget.Socorre.Botao.Critico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco_grande"
+            android:text="@string/acao_comecar" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

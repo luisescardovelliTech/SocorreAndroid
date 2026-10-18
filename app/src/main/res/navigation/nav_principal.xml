@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- O destino inicial é definido em MainActivity (onboarding → login → início). -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_principal"
+    app:startDestination="@id/inicioFragment">
+
+    <fragment
+        android:id="@+id/boasVindasFragment"
+        android:name="com.luistech.socorre.ui.fragment.BoasVindasFragment"
+        android:label="@string/tela_boas_vindas" />
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.luistech.socorre.ui.fragment.LoginFragment"
+        android:label="@string/tela_login" />
+
+    <fragment
+        android:id="@+id/permissoesFragment"
+        android:name="com.luistech.socorre.ui.fragment.PermissoesFragment"
+        android:label="@string/tela_permissoes">
+        <argument
+            android:name="configuracaoInicial"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.luistech.socorre.ui.fragment.PerfilFragment"
+        android:label="@string/tela_perfil">
+        <argument
+            android:name="configuracaoInicial"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contatosFragment"
+        android:name="com.luistech.socorre.ui.fragment.ContatosFragment"
+        android:label="@string/tela_contatos">
+        <argument
+            android:name="configuracaoInicial"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/inicioFragment"
+        android:name="com.luistech.socorre.ui.fragment.InicioFragment"
+        android:label="@string/tela_inicio" />
+
+    <fragment
+        android:id="@+id/trajetoAtivoFragment"
+        android:name="com.luistech.socorre.ui.fragment.TrajetoAtivoFragment"
+        android:label="@string/tela_trajeto" />
+
+    <fragment
+        android:id="@+id/historicoFragment"
+        android:name="com.luistech.socorre.ui.fragment.HistoricoFragment"
+        android:label="@string/tela_historico" />
+
+    <fragment
+        android:id="@+id/detalheFragment"
+        android:name="com.luistech.socorre.ui.fragment.DetalheFragment"
+        android:label="@string/tela_detalhe">
+        <argument
+            android:name="tipo"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/configuracoesFragment"
+        android:name="com.luistech.socorre.ui.fragment.ConfiguracoesFragment"
+        android:label="@string/tela_configuracoes" />
+
+    <fragment
+        android:id="@+id/modoTesteFragment"
+        android:name="com.luistech.socorre.ui.fragment.ModoTesteFragment"
+        android:label="@string/tela_modo_teste" />
+
+    <fragment
+        android:id="@+id/diagnosticoFragment"
+        android:name="com.luistech.socorre.ui.fragment.DiagnosticoFragment"
+        android:label="@string/tela_diagnostico" />
+</navigation>

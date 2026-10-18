@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Os ids iguais aos destinos do nav_principal ligam a barra à navegação. -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/inicioFragment"
+        android:icon="@drawable/ic_inicio"
+        android:title="@string/tela_inicio" />
+    <item
+        android:id="@+id/historicoFragment"
+        android:icon="@drawable/ic_historico"
+        android:title="@string/tela_historico" />
+    <item
+        android:id="@+id/contatosFragment"
+        android:icon="@drawable/ic_contatos"
+        android:title="@string/tela_contatos" />
+    <item
+        android:id="@+id/configuracoesFragment"
+        android:icon="@drawable/ic_config"
+        android:title="@string/tela_configuracoes" />
+</menu>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margem">
+
+        <TextView
+            android:id="@+id/textoTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityHeading="true"
+            android:text="@string/trajeto_titulo"
+            android:textAppearance="@style/TextAppearance.Socorre.Titulo" />
+
+        <TextView
+            android:id="@+id/textoSemTrajeto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco"
+            android:text="@string/trajeto_nenhum"
+            android:textAppearance="@style/TextAppearance.Socorre.Corpo"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/grupoAtivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaco"
+                android:text="@string/trajeto_distancia"
+                android:textAppearance="@style/TextAppearance.Socorre.Apoio" />
+
+            <TextView
+                android:id="@+id/textoDistancia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/texto" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaco"
+                android:text="@string/trajeto_duracao"
+                android:textAppearance="@style/TextAppearance.Socorre.Apoio" />
+
+            <TextView
+                android:id="@+id/textoDuracao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/texto" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaco"
+                android:text="@string/trajeto_velocidade"
+                android:textAppearance="@style/TextAppearance.Socorre.Apoio" />
+
+            <TextView
+                android:id="@+id/textoVelocidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/texto" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaco"
+                android:text="@string/trajeto_media"
+                android:textAppearance="@style/TextAppearance.Socorre.Apoio" />
+
+            <TextView
+                android:id="@+id/textoMedia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/texto" />
+
+            <TextView
+                android:id="@+id/textoGps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaco"
+                android:textAppearance="@style/TextAppearance.Socorre.Apoio" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaco_grande"
+                android:accessibilityHeading="true"
+                android:text="@string/trajeto_checkin"
+                android:textAppearance="@style/TextAppearance.Socorre.Secao" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaco"
+                android:text="@string/trajeto_checkin_ajuda"
+                android:textAppearance="@style/TextAppearance.Socorre.Apoio" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/grupoCheckin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaco"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/botaoCheckin15"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/toque_padrao"
+                    android:text="@string/checkin_15"
+                    android:textSize="17sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/botaoCheckin30"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/toque_padrao"
+                    android:text="@string/checkin_30"
+                    android:textSize="17sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/botaoCheckin60"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/toque_padrao"
+                    android:text="@string/checkin_60"
+                    android:textSize="17sp" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <com.luistech.socorre.ui.componente.BotaoPanico
+                android:id="@+id/botaoPanico"
+                android:layout_width="@dimen/panico"
+                android:layout_height="@dimen/panico"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/espaco_grande" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/botaoEncerrar"
+                style="@style/Widget.Socorre.Botao.Critico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaco_grande"
+                android:text="@string/trajeto_encerrar" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

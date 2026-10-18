@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Socorre" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primaria</item>
+        <item name="colorOnPrimary">@color/sobre_primaria</item>
+        <item name="colorPrimaryContainer">@color/primaria_container</item>
+        <item name="colorOnPrimaryContainer">@color/sobre_primaria_container</item>
+        <item name="colorSecondary">@color/primaria</item>
+        <item name="colorOnSecondary">@color/sobre_primaria</item>
+        <item name="colorSecondaryContainer">@color/primaria_container</item>
+        <item name="colorOnSecondaryContainer">@color/sobre_primaria_container</item>
+        <item name="colorError">@color/emergencia</item>
+        <item name="colorOnError">@color/sobre_emergencia</item>
+        <item name="android:colorBackground">@color/fundo</item>
+        <item name="colorOnBackground">@color/texto</item>
+        <item name="colorSurface">@color/superficie</item>
+        <item name="colorOnSurface">@color/texto</item>
+        <item name="colorSurfaceVariant">@color/superficie_variante</item>
+        <item name="colorOnSurfaceVariant">@color/texto_secundario</item>
+        <item name="colorOutline">@color/contorno</item>
+        <item name="android:windowBackground">@color/fundo</item>
+        <item name="materialButtonStyle">@style/Widget.Socorre.Botao</item>
+        <item name="textInputStyle">@style/Widget.Material3.TextInputLayout.OutlinedBox</item>
+        <item name="android:windowLightStatusBar">@bool/barra_clara</item>
+    </style>
+
+    <!-- Contagem: fundo vermelho de emergência, alto contraste. -->
+    <style name="Theme.Socorre.Emergencia" parent="Theme.Socorre">
+        <item name="android:windowBackground">@color/emergencia</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <!-- Tipografia com tamanhos em sp (acompanha a escala de fonte do sistema até 200%). -->
+    <style name="TextAppearance.Socorre.Titulo" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/texto</item>
+    </style>
+
+    <style name="TextAppearance.Socorre.Secao" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/texto</item>
+    </style>
+
+    <style name="TextAppearance.Socorre.Corpo" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:textColor">@color/texto</item>
+    </style>
+
+    <style name="TextAppearance.Socorre.Apoio" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/texto_secundario</item>
+    </style>
+
+    <!-- Botões: mínimo 56dp (padrão) e 72dp (críticos), texto grande. -->
+    <style name="Widget.Socorre.Botao" parent="Widget.Material3.Button">
+        <item name="android:minHeight">@dimen/toque_padrao</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <style name="Widget.Socorre.Botao.Critico">
+        <item name="android:minHeight">@dimen/toque_critico</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconSize">28dp</item>
+    </style>
+
+    <style name="Widget.Socorre.Botao.Contorno" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">@dimen/toque_padrao</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <style name="Widget.Socorre.Botao.Texto" parent="Widget.Material3.Button.TextButton">
+        <item name="android:minHeight">@dimen/toque_minimo</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="Widget.Socorre.Botao.Aviso" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:minHeight">@dimen/toque_padrao</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="backgroundTint">@color/aviso_container</item>
+        <item name="android:textColor">@color/aviso_texto</item>
+        <item name="iconTint">@color/aviso_texto</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <style name="Widget.Socorre.Icone" parent="Widget.Material3.Button.IconButton.Outlined">
+        <item name="android:minWidth">@dimen/toque_minimo</item>
+        <item name="android:minHeight">@dimen/toque_minimo</item>
+    </style>
+</resources>

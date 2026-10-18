@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Contraste verificado para WCAG AA (texto normal >= 4,5:1).
+     Semântica: VERDE = monitoramento ativo, CINZA = pausado, VERMELHO = somente emergência. -->
+<resources>
+    <color name="fundo">#F6F7F9</color>
+    <color name="superficie">#FFFFFF</color>
+    <color name="superficie_variante">#EEF0F3</color>
+    <color name="texto">#111827</color>
+    <color name="texto_secundario">#4B5563</color>
+    <color name="contorno">#6B7280</color>
+
+    <!-- Destaque neutro (azul), nunca vermelho -->
+    <color name="primaria">#1D4ED8</color>
+    <color name="sobre_primaria">#FFFFFF</color>
+    <color name="primaria_container">#DBEAFE</color>
+    <color name="sobre_primaria_container">#1E3A8A</color>
+
+    <color name="ativo">#15803D</color>
+    <color name="ativo_container">#DCFCE7</color>
+    <color name="ativo_texto">#14532D</color>
+
+    <color name="pausado">#4B5563</color>
+    <color name="pausado_container">#E5E7EB</color>
+    <color name="pausado_texto">#1F2937</color>
+
+    <color name="emergencia">#B91C1C</color>
+    <color name="emergencia_escura">#991B1B</color>
+    <color name="sobre_emergencia">#FFFFFF</color>
+    <color name="sobre_estado">#FFFFFF</color>
+    <color name="emergencia_container">#FEE2E2</color>
+    <color name="emergencia_texto">#7F1D1D</color>
+
+    <color name="aviso_container">#FEF3C7</color>
+    <color name="aviso_texto">#78350F</color>
+
+    <color name="rota">#1D4ED8</color>
+</resources>
