@@ -23,11 +23,9 @@ import javax.inject.Inject;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import dagger.hilt.android.qualifiers.ApplicationContext;
 
-/** Leituras ao vivo para testes em aparelho físico (atualiza a ~10 Hz). */
 @HiltViewModel
 public class DiagnosticoViewModel extends ViewModel implements SensorEventListener {
 
-    /** Fotografia das leituras. Valores nulos = sensor ausente. */
     public static final class Leitura {
         public float[] acel = new float[3];
         public double g;
@@ -40,7 +38,6 @@ public class DiagnosticoViewModel extends ViewModel implements SensorEventListen
         public Float luzLux;
         public boolean gpsLigado;
         public boolean gpsPermitido;
-        /** Mesmo algoritmo do monitoramento, rodando aqui só para teste (não dispara alerta). */
         public DetectorQueda.Estado detector;
         public String perfil;
         public int quedasConfirmadas;
@@ -73,7 +70,6 @@ public class DiagnosticoViewModel extends ViewModel implements SensorEventListen
         return leitura;
     }
 
-    /** Disponibilidade de cada sensor usado pela detecção. */
     public boolean tem(int tipo) {
         return sensores.getDefaultSensor(tipo) != null;
     }
@@ -140,7 +136,6 @@ public class DiagnosticoViewModel extends ViewModel implements SensorEventListen
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int precisao) {
-        // não utilizado
     }
 
     @Override

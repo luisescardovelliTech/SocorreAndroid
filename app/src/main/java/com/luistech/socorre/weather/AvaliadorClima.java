@@ -5,7 +5,6 @@ import com.luistech.socorre.domain.modelo.Clima;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Regras de aviso de clima antes do trajeto. Java puro. Avisos nunca impedem o trajeto. */
 public final class AvaliadorClima {
 
     public enum Aviso { CHUVA, VENTO_FORTE, FRIO_EXTREMO, CALOR_EXTREMO }
@@ -27,7 +26,6 @@ public final class AvaliadorClima {
         return avisos;
     }
 
-    /** Códigos WMO de garoa (51-57), chuva (61-67), pancadas (80-82) e tempestade (95-99). */
     public static boolean codigoIndicaChuva(int codigo) {
         return (codigo >= 51 && codigo <= 67) || (codigo >= 80 && codigo <= 82) || (codigo >= 95 && codigo <= 99);
     }

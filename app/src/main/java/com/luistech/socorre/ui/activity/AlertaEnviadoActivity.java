@@ -23,7 +23,6 @@ import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/** Tela 9 - Alerta enviado: resultado de cada canal e, no modo de teste, o que seria enviado. */
 @AndroidEntryPoint(AppCompatActivity.class)
 public class AlertaEnviadoActivity extends Hilt_AlertaEnviadoActivity {
 

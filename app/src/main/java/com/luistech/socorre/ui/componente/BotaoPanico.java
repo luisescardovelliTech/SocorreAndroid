@@ -18,11 +18,6 @@ import androidx.core.content.ContextCompat;
 
 import com.luistech.socorre.R;
 
-/**
- * Botão de pânico circular: é preciso SEGURAR por 3 s (anel de progresso) para evitar
- * acionamento acidental. Soltar antes cancela. Funciona com toque, teclado/controle (Enter)
- * e TalkBack (tocar duas vezes e segurar).
- */
 public class BotaoPanico extends View {
 
     public interface Ouvinte {
@@ -70,7 +65,6 @@ public class BotaoPanico extends View {
         float traco = lado * 0.06f;
         anel.setStrokeWidth(traco);
         area.set((w - lado) / 2 + traco, (h - lado) / 2 + traco, (w + lado) / 2 - traco, (h + lado) / 2 - traco);
-        // Texto proporcional ao círculo para nunca vazar, mesmo com fonte do sistema em 200%.
         titulo.setTextSize(lado * 0.17f);
         subtitulo.setTextSize(lado * 0.09f);
     }
@@ -122,7 +116,6 @@ public class BotaoPanico extends View {
 
     @Override
     public boolean performClick() {
-        // Um toque simples não aciona: só informa como usar.
         super.performClick();
         announceForAccessibility(getContext().getString(R.string.panico_dica));
         return true;

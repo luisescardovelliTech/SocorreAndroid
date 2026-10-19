@@ -26,7 +26,6 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
 
-
 @HiltWorker
 public class TrabalhadorReenvioApi extends Worker {
 
@@ -50,6 +49,7 @@ public class TrabalhadorReenvioApi extends Worker {
         this.repositorio = repositorio;
     }
 
+    // envia o registro pra api; se falhar tenta de novo depois
     @NonNull
     @Override
     public Result doWork() {
@@ -79,7 +79,6 @@ public class TrabalhadorReenvioApi extends Worker {
                 return Result.success();
             }
             erro = "HTTP " + codigo;
-            // O contrato devolve 500 em erro de banco no servidor: vale tentar de novo.
             reenviavel = codigo >= 500 || codigo == 408 || codigo == 429;
         } catch (IOException | RuntimeException e) {
             erro = e.getClass().getSimpleName();

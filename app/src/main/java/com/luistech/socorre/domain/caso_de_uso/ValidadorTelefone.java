@@ -1,15 +1,10 @@
 package com.luistech.socorre.domain.caso_de_uso;
 
-/** Valida e normaliza telefones para SMS. Java puro. */
 public final class ValidadorTelefone {
 
     private ValidadorTelefone() {
     }
 
-    /**
-     * Remove formatação mantendo o "+" inicial. Aceita de 8 a 15 dígitos (E.164).
-     * @return telefone normalizado ou nulo se inválido.
-     */
     public static String normalizar(String entrada) {
         if (entrada == null) return null;
         String t = entrada.trim();
@@ -19,7 +14,7 @@ public final class ValidadorTelefone {
         return internacional ? "+" + digitos : digitos;
     }
 
-    /** Máscara brasileira enquanto digita: (18) 99999-0000 ou (18) 3333-0000. Ignora +55. */
+    // mascara do telefone: (18) 99999-0000
     public static String mascarar(String entrada) {
         if (entrada == null) return "";
         String d = entrada.replaceAll("[^0-9]", "");

@@ -43,16 +43,10 @@ import javax.inject.Singleton;
 
 import dagger.hilt.android.qualifiers.ApplicationContext;
 
-/**
- * Executa o alerta: localização → evento → SMS → API Socorro (fila).
- * Cada canal é isolado em try/catch e tem status próprio: a falha de um nunca impede os outros.
- * O SMS usa apenas dados locais (Preferencias), então funciona sem internet.
- */
 @Singleton
 public class DespachanteAlerta {
 
     private static final String TAG = "Socorre.Alerta";
-    /** Prazo do GPS para cumprir o RNF02 (SMS em até 10 s). */
     static final long PRAZO_GPS_MS = 7_000;
     static final long PRAZO_PRESSAO_MS = 1_000;
 
@@ -82,7 +76,7 @@ public class DespachanteAlerta {
         this.clima = clima;
     }
 
-    /** Bloqueante (GPS + SMS). Chamar fora da thread principal. Devolve o evento criado. */
+    // pega a localizacao, salva o evento, manda o sms e envia pra api
     @WorkerThread
     public Evento disparar(TipoEvento tipo, @Nullable Leituras leituras, boolean teste) {
         String uid = usuarios.uid();
@@ -96,7 +90,6 @@ public class DespachanteAlerta {
         e.trajetoId = prefs.trajetoAtivoId();
         e.bateriaPct = bateria();
 
-        // 1-3. Localização (melhor esforço), horário e precisão
         try {
             Localizacao loc = localizacao.obterMelhorLocalizacao(PRAZO_GPS_MS);
             e.localizacao = loc;
@@ -105,7 +98,6 @@ public class DespachanteAlerta {
             registrarFalha("localizacao", ex);
         }
 
-        // 4-5. Evento salvo antes dos envios (Firestore offline grava no cache local)
         e.id = uid != null ? eventos.novoId(uid) : "local-" + e.dataHora.getTime();
         String mensagem = montarMensagem(tipo, e);
         List<ContatoEmergencia> contatos = prefs.contatos();
@@ -117,7 +109,6 @@ public class DespachanteAlerta {
             }
         }
 
-        // 6. SMS - primeiro canal, independente de internet
         try {
             if (teste) {
                 e.envios.sms.status = StatusEnvio.SIMULADO;
@@ -130,7 +121,6 @@ public class DespachanteAlerta {
             registrarFalha("sms", ex);
         }
 
-        // Montado só depois do SMS: a leitura do barômetro não pode atrasar o alerta.
         String payload = null;
         try {
             payload = montarPayload(e, PayloadApi.REGISTRO_QUEDA);
@@ -139,9 +129,7 @@ public class DespachanteAlerta {
             registrarFalha("payload", ex);
         }
 
-        // 7. API externa - apenas enfileira; nunca atrasa o SMS
         try {
-            // Também no modo de teste: a API Socorro recebe o registro (só o SMS é simulado).
             if (uid != null && payload != null) {
                 api.enfileirar(uid, e.id, payload);
             } else {
@@ -153,11 +141,9 @@ public class DespachanteAlerta {
             registrarFalha("api", ex);
         }
 
-        // 8. Resultado de cada canal
         if (uid != null) {
             try {
                 Map<String, Object> campos = new HashMap<>();
-                // Campos separados: as confirmações da operadora (arrayUnion) não são sobrescritas.
                 campos.put("envios.sms.status", e.envios.sms.status);
                 campos.put("envios.sms.enviadosPara", e.envios.sms.enviadosPara);
                 if (!e.envios.sms.falhas.isEmpty()) {
@@ -183,7 +169,7 @@ public class DespachanteAlerta {
         return e;
     }
 
-    /** "ESTOU BEM": salva o evento com status NORMAL e envia à API como rotina (tipo_registro 1). Sem SMS. */
+    // estou bem: salva como normal e envia pra api com tipo_registro 1
     @WorkerThread
     public void registrarNormal(TipoEvento tipo, @Nullable Leituras leituras, boolean teste) {
         String uid = usuarios.uid();
@@ -198,7 +184,7 @@ public class DespachanteAlerta {
         e.perfilAtividade = prefs.perfil().name();
         e.trajetoId = prefs.trajetoAtivoId();
         e.bateriaPct = bateria();
-        e.envios.sms = null; // nenhum SMS: estava tudo bem
+        e.envios.sms = null;
         try {
             e.localizacao = localizacao.obterMelhorLocalizacao(PRAZO_GPS_MS);
             e.precisaoM = e.localizacao != null ? e.localizacao.precisaoM : null;
@@ -238,7 +224,6 @@ public class DespachanteAlerta {
         return MontadorMensagem.montar(modelo, valores, ficha);
     }
 
-    /** Corpo da API Socorro; pressão lida na hora e temperatura do cache do clima. */
     private String montarPayload(Evento e, int tipoRegistro) {
         Float pressao = null;
         try {
@@ -297,7 +282,6 @@ public class DespachanteAlerta {
         try {
             FirebaseCrashlytics.getInstance().recordException(ex);
         } catch (Exception ignorada) {
-            // Crashlytics indisponível (Firebase não configurado)
         }
     }
 }

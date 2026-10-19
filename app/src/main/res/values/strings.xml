@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Todos os textos visíveis do app (pt-BR). Para traduzir, crie values-<idioma>/strings.xml. -->
 <resources>
     <string name="app_name">Socorre</string>
     <string name="carregando">Carregando</string>
     <string name="nenhum">Nenhum</string>
 
-    <!-- Nomes de telas -->
     <string name="tela_boas_vindas">Boas-vindas</string>
     <string name="tela_login">Entrar</string>
     <string name="tela_permissoes">Permissões</string>
@@ -19,7 +17,6 @@
     <string name="tela_modo_teste">Modo de teste</string>
     <string name="tela_diagnostico">Diagnóstico de sensores</string>
 
-    <!-- Ações -->
     <string name="acao_abrir_configuracoes">Abrir configurações</string>
     <string name="acao_ativar_monitoramento">Ativar monitoramento</string>
     <string name="acao_pausar_monitoramento">Pausar monitoramento</string>
@@ -41,7 +38,6 @@
     <string name="acao_salvar">Salvar</string>
     <string name="acao_ver_mapa">Ver no mapa</string>
 
-    <!-- Status (sempre em texto, nunca só por cor) -->
     <string name="status_ativo">Monitoramento ativo</string>
     <string name="status_pausado">Monitoramento pausado</string>
     <string name="status_emergencia">Emergência em andamento</string>
@@ -52,7 +48,6 @@
     <string name="status_evento_enviado">Alerta enviado</string>
     <string name="status_evento_encerrado">Encerrado</string>
 
-    <!-- Boas-vindas / LGPD -->
     <string name="boas_vindas_titulo">Bem-vindo ao Socorre</string>
     <string name="boas_vindas_subtitulo">O Socorre percebe quedas e acidentes e avisa quem você escolher, com a sua localização.</string>
     <string name="boas_vindas_como_funciona">Como funciona</string>
@@ -64,7 +59,6 @@
     <string name="boas_vindas_privacidade_texto">Usamos sua localização apenas para informar seus contatos em uma emergência e para registrar os trajetos que você iniciar. Dados médicos só são guardados se você autorizar, e só entram no alerta se você permitir. Seus dados ficam protegidos na sua conta e você pode excluir tudo a qualquer momento em Ajustes.</string>
     <string name="boas_vindas_consentimento">Concordo com o uso da minha localização para avisar meus contatos em caso de emergência.</string>
 
-    <!-- Login -->
     <string name="login_titulo">Entrar no Socorre</string>
     <string name="login_subtitulo">Use seu e-mail e senha.</string>
     <string name="login_email">E-mail</string>
@@ -73,7 +67,6 @@
     <string name="login_cadastrar">Criar conta</string>
     <string name="login_esqueci">Esqueci minha senha</string>
 
-    <!-- Permissões (explicações exibidas ANTES de cada pedido) -->
     <string name="perm_titulo">Permissões</string>
     <string name="perm_subtitulo">Explicamos para que serve cada permissão. Se você não permitir, o app continua funcionando, mas com menos recursos.</string>
     <string name="perm_localizacao_titulo">Localização</string>
@@ -99,7 +92,6 @@
     <string name="perm_negada_configuracoes">Permissão negada. Você pode liberar nas configurações do app.</string>
     <string name="url_dontkillmyapp">https://dontkillmyapp.com/%1$s</string>
 
-    <!-- Perfil e ficha médica -->
     <string name="perfil_titulo">Seu perfil</string>
     <string name="perfil_foto">Escolher foto</string>
     <string name="perfil_foto_desc">Sua foto de perfil</string>
@@ -123,7 +115,6 @@
     <string name="perfil_medicamentos">Medicamentos em uso</string>
     <string name="perfil_condicoes">Condições de saúde</string>
 
-    <!-- Contatos -->
     <string name="contatos_titulo">Contatos de emergência</string>
     <string name="contatos_limite">%1$d de %2$d contatos. O primeiro tem prioridade.</string>
     <string name="contatos_vazio">Nenhum contato ainda. Adicione pelo menos uma pessoa para poder ativar o monitoramento.</string>
@@ -145,7 +136,6 @@
     <string name="contato_testar_titulo">Enviar SMS de teste?</string>
     <string name="contato_testar_texto">Vamos enviar um SMS de teste para %1$s (%2$s) para confirmar o número. Pode haver custo da operadora.</string>
 
-    <!-- Início -->
     <string name="inicio_perfil_atual">Perfil: %1$s</string>
     <string name="inicio_perfil_titulo">O que você vai fazer?</string>
     <string name="inicio_ver_emergencia">Emergência em andamento. Toque para ver.</string>
@@ -157,7 +147,6 @@
     <string name="panico_descricao">Botão de pânico. Toque duas vezes e segure por 3 segundos para pedir ajuda.</string>
     <string name="panico_dica">Para pedir ajuda, mantenha o botão pressionado por 3 segundos.</string>
 
-    <!-- Trajeto -->
     <string name="trajeto_titulo">Trajeto em andamento</string>
     <string name="trajeto_nenhum">Nenhum trajeto em andamento. Inicie um trajeto na tela inicial.</string>
     <string name="trajeto_distancia">Distância</string>
@@ -175,7 +164,6 @@
     <string name="checkin_30">30 min</string>
     <string name="checkin_60">60 min</string>
 
-    <!-- Clima -->
     <string name="clima_verificando">Verificando o clima</string>
     <string name="clima_titulo_aviso">Atenção ao clima</string>
     <string name="clima_agora">Agora: %1$s, %2$d °C.</string>
@@ -199,7 +187,6 @@
     <string name="clima_tempestade">tempestade</string>
     <string name="clima_desconhecido">tempo indefinido</string>
 
-    <!-- Contagem regressiva -->
     <string name="contagem_titulo">Detectamos um possível acidente</string>
     <string name="contagem_tipo">Motivo: %1$s</string>
     <string name="contagem_instrucao">Se ninguém responder, seus contatos serão avisados.</string>
@@ -211,7 +198,6 @@
         <item quantity="other">Faltam %1$d segundos para avisar seus contatos</item>
     </plurals>
 
-    <!-- Alerta enviado -->
     <string name="alerta_titulo">Alerta enviado</string>
     <string name="alerta_titulo_teste">Simulação concluída: nada foi enviado</string>
     <string name="alerta_resumo">%1$s às %2$s</string>
@@ -221,7 +207,6 @@
     <string name="alerta_canal_sms">SMS para os contatos</string>
     <string name="alerta_canal_api">Central de monitoramento (API Socorro)</string>
 
-    <!-- Status de envio -->
     <string name="envio_pendente">Aguardando</string>
     <string name="envio_enviado">Enviado</string>
     <string name="envio_falhou">Falhou</string>
@@ -233,14 +218,12 @@
     <string name="envio_sms_detalhe">%1$s (%2$d de %3$d confirmados pela operadora)</string>
     <string name="envio_api_detalhe">%1$s (tentativas: %2$d, último erro: %3$s)</string>
 
-    <!-- Tipos de evento e texto do SMS -->
     <string name="tipo_queda">Queda</string>
     <string name="tipo_panico">Botão de pânico</string>
     <string name="tipo_checkin">Check-in sem resposta</string>
     <string name="situacao_queda">pode ter sofrido uma queda</string>
     <string name="situacao_panico">acionou o botão de pânico e precisa de ajuda</string>
     <string name="situacao_checkin">não respondeu ao check-in de segurança</string>
-    <!-- Marcadores: {nome} {situacao} {tipo} {dataHora} {localizacao} -->
     <string name="sms_modelo_padrao">ALERTA DE EMERGÊNCIA: {nome} {situacao}. Evento: {tipo}. Horário: {dataHora}. Localização: {localizacao}.</string>
     <string name="sms_localizacao">%1$s (±%2$d m)</string>
     <string name="sms_localizacao_indisponivel">indisponível</string>
@@ -248,7 +231,6 @@
     <string name="sms_ficha_rotulo">Ficha médica:</string>
     <string name="sms_teste">Socorre: este é um SMS de teste enviado por %1$s. Você está cadastrado como contato de emergência. Nenhuma ação é necessária.</string>
 
-    <!-- Notificações -->
     <string name="canal_monitoramento">Monitoramento</string>
     <string name="canal_emergencia">Emergência</string>
     <string name="canal_checkin">Check-in de segurança</string>
@@ -268,7 +250,6 @@
     <string name="boot_falhou_titulo">Monitoramento desligado</string>
     <string name="boot_falhou_texto">O celular foi reiniciado e o Android não permitiu religar o monitoramento sozinho. Abra o Socorre e toque em \"Ativar monitoramento\".</string>
 
-    <!-- Histórico e detalhes -->
     <string name="historico_titulo">Histórico</string>
     <string name="historico_vazio">Nenhum evento ou trajeto registrado ainda.</string>
     <string name="historico_teste">%1$s (teste)</string>
@@ -295,7 +276,6 @@
     <string name="detalhe_clima">Clima no início</string>
     <string name="detalhe_eventos">Eventos no trajeto</string>
 
-    <!-- Formatos com unidade -->
     <string name="formato_km">%1$s km</string>
     <string name="formato_kmh">%1$s km/h</string>
     <string name="formato_metros">%1$d m</string>
@@ -304,7 +284,6 @@
     <string name="formato_g">%1$s g</string>
     <string name="formato_graus">%1$s°</string>
 
-    <!-- Ajustes -->
     <string name="config_titulo">Ajustes</string>
     <string name="config_deteccao">Detecção de quedas</string>
     <string name="config_sensibilidade_perfil">Sensibilidade para o perfil %1$s</string>
@@ -340,7 +319,6 @@
     <string name="conta_excluir_titulo">Excluir conta e dados?</string>
     <string name="conta_excluir_texto">Isso apaga permanentemente seu perfil, ficha médica, contatos, eventos e trajetos. Não é possível desfazer.</string>
 
-    <!-- Modo de teste -->
     <string name="teste_titulo">Modo de teste</string>
     <string name="teste_aviso">Nenhum SMS ou notificação real será enviado. O registro vai para a API Socorro normalmente, e no app o evento fica marcado como teste.</string>
     <string name="teste_explicacao">Use para conhecer o fluxo: a contagem aparece, você pode cancelar ou deixar terminar, e no final mostramos exatamente o que seria enviado.</string>
@@ -353,7 +331,6 @@
     <string name="teste_previa_destinatarios">Destinatários</string>
     <string name="teste_previa_payload">Dados enviados à API Socorro</string>
 
-    <!-- Diagnóstico -->
     <string name="diag_titulo">Diagnóstico de sensores</string>
     <string name="diag_explicacao">Leituras em tempo real para testar o aparelho. Movimente o celular para ver os valores mudarem.</string>
     <string name="diag_disponiveis">Acelerômetro: %1$s\nGiroscópio: %2$s\nProximidade: %3$s\nBarômetro: %4$s\nLuz ambiente: %5$s</string>
@@ -391,19 +368,16 @@
     <string name="diag_ligado">ligado</string>
     <string name="diag_desligado">desligado</string>
 
-    <!-- Widget -->
     <string name="widget_nome">Pânico do Socorre</string>
     <string name="widget_texto">SOCORRO</string>
     <string name="widget_descricao">Toque para iniciar a contagem de emergência. Você ainda pode cancelar.</string>
 
-    <!-- Mensagens -->
     <string name="msg_conta_excluida">Conta e dados excluídos.</string>
     <string name="msg_email_recuperacao">Enviamos um e-mail para você criar uma nova senha.</string>
     <string name="msg_mensagem_salva">Mensagem salva.</string>
     <string name="msg_perfil_salvo">Perfil salvo.</string>
     <string name="msg_sms_teste_enviado">SMS de teste enviado.</string>
 
-    <!-- Erros -->
     <string name="erro_generico">Algo deu errado. Tente de novo.</string>
     <string name="erro_sem_internet">Sem conexão com a internet. Verifique e tente de novo.</string>
     <string name="erro_email_invalido">Digite um e-mail válido.</string>
@@ -425,5 +399,5 @@
     <string name="erro_reautenticar">Por segurança, saia e entre de novo na conta antes de excluí-la.</string>
     <string name="erro_excluir_conta">Não foi possível excluir a conta. Verifique a internet e tente de novo.</string>
     <string name="erro_abrir_configuracoes">Não foi possível abrir as configurações. Procure por \"Socorre\" nas configurações do celular.</string>
-    <string name="erro_firebase_nao_configurado">O Firebase ainda não foi configurado neste projeto. Adicione o arquivo google-services.json (veja o README).</string>
+    <string name="erro_firebase_nao_configurado">O Firebase ainda não foi configurado neste projeto. Adicione o arquivo google-services.json na pasta app.</string>
 </resources>

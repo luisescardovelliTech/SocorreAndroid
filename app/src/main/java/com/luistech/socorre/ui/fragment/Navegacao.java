@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
 
-/** Atalhos de navegação usados pelos fragments. */
 final class Navegacao {
 
     static final String ARG_CONFIG_INICIAL = "configuracaoInicial";
@@ -22,7 +21,6 @@ final class Navegacao {
         NavHostFragment.findNavController(f).navigate(destino, args);
     }
 
-    /** Navega limpando toda a pilha (ex.: fim do onboarding, login, logout). */
     static void substituirTudo(Fragment f, int destino, Bundle args) {
         androidx.navigation.NavController nav = NavHostFragment.findNavController(f);
         NavOptions opcoes = new NavOptions.Builder().setPopUpTo(nav.getGraph().getId(), true).build();

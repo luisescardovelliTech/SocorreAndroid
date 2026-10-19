@@ -1,6 +1,5 @@
 package com.luistech.socorre.domain.modelo;
 
-/** Status de cada canal de envio (sms e api), gravados como texto. */
 public final class StatusEnvio {
     public static final String PENDENTE = "PENDENTE";
     public static final String ENVIADO = "ENVIADO";

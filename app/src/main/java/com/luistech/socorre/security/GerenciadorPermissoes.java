@@ -10,7 +10,6 @@ import android.os.PowerManager;
 
 import androidx.core.content.ContextCompat;
 
-/** Consultas de estado de permissões. Nenhum método lança exceção por permissão negada. */
 public final class GerenciadorPermissoes {
 
     private GerenciadorPermissoes() {
@@ -49,7 +48,6 @@ public final class GerenciadorPermissoes {
         return am != null && am.canScheduleExactAlarms();
     }
 
-    /** Android 14+: tela cheia só é liberada para alguns tipos de app; senão usamos notificação de alta prioridade. */
     public static boolean podeTelaCheia(Context c) {
         if (Build.VERSION.SDK_INT < 34) return true;
         NotificationManager nm = c.getSystemService(NotificationManager.class);

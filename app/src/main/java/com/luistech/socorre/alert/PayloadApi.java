@@ -3,29 +3,20 @@ package com.luistech.socorre.alert;
 import com.google.gson.JsonObject;
 import com.luistech.socorre.domain.modelo.Evento;
 
-/**
- * Corpo do POST da API Socorro (RegistroSocorroInput). Todos os campos são opcionais no
- * contrato; campos sem valor não são enviados. Java puro (testável).
- */
+// monta o json enviado para a api socorro
 public final class PayloadApi {
 
-    /** tipo_registro do contrato. */
     public static final int REGISTRO_ROTINA = 1;
     public static final int REGISTRO_QUEDA = 2;
 
     private PayloadApi() {
     }
 
-    /**
-     * Alerta (queda, pânico ou check-in sem resposta) vai como tipo 2: o contrato só distingue
-     * rotina de emergência.
-     */
     public static String montar(Evento e, String usuario, String deviceId, String modelo,
                                 Float pressaoHpa, Double temperaturaC) {
         return montar(e, usuario, deviceId, modelo, pressaoHpa, temperaturaC, REGISTRO_QUEDA);
     }
 
-    /** "Estou bem" vai como REGISTRO_ROTINA (1). */
     public static String montar(Evento e, String usuario, String deviceId, String modelo,
                                 Float pressaoHpa, Double temperaturaC, int tipoRegistro) {
         JsonObject j = new JsonObject();

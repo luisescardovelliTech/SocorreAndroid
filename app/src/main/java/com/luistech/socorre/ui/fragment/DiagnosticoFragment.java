@@ -20,7 +20,6 @@ import com.luistech.socorre.util.Formatos;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/** Tela 14 - Diagnóstico de sensores em tempo real (para testes em aparelho físico). */
 @AndroidEntryPoint(Fragment.class)
 public class DiagnosticoFragment extends Hilt_DiagnosticoFragment {
 

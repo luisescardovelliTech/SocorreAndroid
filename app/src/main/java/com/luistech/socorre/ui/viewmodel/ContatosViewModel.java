@@ -21,7 +21,6 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
-/** Lista de 1 a 5 contatos. Cada alteração é gravada na hora (nuvem + cache local do SMS). */
 @HiltViewModel
 public class ContatosViewModel extends ViewModel {
 
@@ -38,7 +37,7 @@ public class ContatosViewModel extends ViewModel {
         this.prefs = prefs;
         this.sms = sms;
         this.executor = executor;
-        contatos.setValue(prefs.contatos()); // mostra o cache na hora
+        contatos.setValue(prefs.contatos());
         repo.carregarContatos().addOnSuccessListener(contatos::setValue);
     }
 
@@ -54,10 +53,6 @@ public class ContatosViewModel extends ViewModel {
         return lista().size() < ContatoEmergencia.MAXIMO;
     }
 
-    /**
-     * Valida e grava (indice -1 = novo).
-     * @return recurso de erro do telefone/nome, ou 0 se gravou.
-     */
     public int salvar(int indice, String nome, String telefone, String relacao) {
         if (nome == null || nome.trim().isEmpty()) return R.string.erro_nome_obrigatorio;
         String tel = ValidadorTelefone.normalizar(telefone);
@@ -82,7 +77,6 @@ public class ContatosViewModel extends ViewModel {
         gravar(l, c.id != null ? Collections.singletonList(c.id) : Collections.<String>emptyList());
     }
 
-    /** Muda a prioridade (delta -1 = subir, +1 = descer). */
     public void mover(int indice, int delta) {
         List<ContatoEmergencia> l = lista();
         int destino = indice + delta;

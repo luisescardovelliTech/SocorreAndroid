@@ -1,6 +1,5 @@
 package com.luistech.socorre.domain.modelo;
 
-/** Tipos de evento de emergência (valor gravado no Firestore e enviado à API). */
 public enum TipoEvento {
     QUEDA,
     PANICO,

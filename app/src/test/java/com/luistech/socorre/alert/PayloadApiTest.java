@@ -13,7 +13,6 @@ import org.junit.Test;
 
 import java.util.Date;
 
-/** Formato do corpo da API Socorro (RegistroSocorroInput, SwaggerHub 1.0.0). */
 public class PayloadApiTest {
 
     @Test

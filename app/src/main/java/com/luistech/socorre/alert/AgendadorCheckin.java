@@ -12,11 +12,6 @@ import javax.inject.Singleton;
 
 import dagger.hilt.android.qualifiers.ApplicationContext;
 
-/**
- * Agenda os check-ins com AlarmManager (e não WorkManager) porque o horário importa:
- * alarmes exatos disparam mesmo em Doze. Sem a permissão de alarme exato, usa o
- * alarme inexato permitido em Doze (pode atrasar alguns minutos; avisado na tela de permissões).
- */
 @Singleton
 public class AgendadorCheckin {
 

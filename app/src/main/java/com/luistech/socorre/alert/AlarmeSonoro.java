@@ -19,7 +19,6 @@ import javax.inject.Singleton;
 
 import dagger.hilt.android.qualifiers.ApplicationContext;
 
-/** Som de alarme com volume crescente + vibração durante a contagem regressiva. */
 @Singleton
 public class AlarmeSonoro {
 
@@ -66,7 +65,6 @@ public class AlarmeSonoro {
             player.start();
             handler.post(rampa);
         } catch (Exception e) {
-            // Sem som não pode impedir a contagem: segue só com vibração e notificação.
             Log.w("Socorre.Alarme", "nao foi possivel tocar o alarme", e);
             liberarPlayer();
         }
@@ -100,7 +98,6 @@ public class AlarmeSonoro {
             try {
                 player.stop();
             } catch (IllegalStateException ignorada) {
-                // já parado
             }
             player.release();
             player = null;

@@ -17,7 +17,6 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/** Tela 1 - Boas-vindas, explicação do funcionamento e consentimento LGPD de localização. */
 @AndroidEntryPoint(Fragment.class)
 public class BoasVindasFragment extends Hilt_BoasVindasFragment {
 

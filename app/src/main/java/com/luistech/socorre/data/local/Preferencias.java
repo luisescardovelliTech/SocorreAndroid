@@ -18,11 +18,6 @@ import javax.inject.Singleton;
 
 import dagger.hilt.android.qualifiers.ApplicationContext;
 
-/**
- * Configurações locais e cache mínimo para o fluxo de emergência funcionar sem internet:
- * nome/telefone do usuário, contatos e ficha médica autorizada ficam aqui, então o SMS
- * nunca depende do Firestore responder.
- */
 @Singleton
 public class Preferencias {
 
@@ -30,7 +25,6 @@ public class Preferencias {
     public static final int CONTAGEM_MIN_SEG = 15;
     public static final int CONTAGEM_MAX_SEG = 60;
 
-    /** Modos de tema. */
     public static final String TEMA_SISTEMA = "SISTEMA";
     public static final String TEMA_CLARO = "CLARO";
     public static final String TEMA_ESCURO = "ESCURO";
@@ -73,7 +67,6 @@ public class Preferencias {
         return sp.getLong(K_CONSENT_LOCALIZACAO, 0);
     }
 
-    /** Modo de teste: qualquer movimento brusco abre a tela de socorro. */
     public boolean gatilhoBrusco() {
         return sp.getBoolean("gatilho_brusco", false);
     }
@@ -98,7 +91,6 @@ public class Preferencias {
         sp.edit().putString(K_PERFIL, p.name()).apply();
     }
 
-    /** Sensibilidade é configurada por perfil de atividade. */
     public Sensibilidade sensibilidade(PerfilAtividade p) {
         return Sensibilidade.deTexto(sp.getString(K_SENSIBILIDADE + p.name(), null));
     }
@@ -124,7 +116,6 @@ public class Preferencias {
         sp.edit().putString(K_TEMA, modo).apply();
     }
 
-    /** Intervalo de check-in em minutos (15, 30 ou 60). 0 = desligado. */
     public int intervaloCheckinMin() {
         return sp.getInt(K_CHECKIN, 30);
     }
@@ -133,7 +124,6 @@ public class Preferencias {
         sp.edit().putInt(K_CHECKIN, min).apply();
     }
 
-    /** Modelo personalizado do SMS; nulo = usar o padrão do strings.xml. */
     public String mensagemSmsPersonalizada() {
         return sp.getString(K_MENSAGEM, null);
     }
@@ -165,7 +155,6 @@ public class Preferencias {
         sp.edit().putString(K_CONTATOS, gson.toJson(contatos)).apply();
     }
 
-    /** Ficha médica em cache local, apenas para montar o SMS sem internet. */
     public FichaMedica fichaMedica() {
         String json = sp.getString(K_FICHA, null);
         return json == null ? null : gson.fromJson(json, FichaMedica.class);
@@ -183,7 +172,6 @@ public class Preferencias {
         sp.edit().putString(K_TRAJETO, id).putLong("trajeto_inicio_ms", System.currentTimeMillis()).apply();
     }
 
-    /** Início do trajeto ativo: o tempo não zera se o sistema reiniciar o serviço. */
     public long trajetoInicioMs() {
         return sp.getLong("trajeto_inicio_ms", System.currentTimeMillis());
     }
@@ -204,7 +192,6 @@ public class Preferencias {
         sp.edit().putString(K_CLIMA, json).apply();
     }
 
-    /** Apaga tudo (logout/exclusão de conta), mantendo apenas o onboarding concluído. */
     public void limparDadosUsuario() {
         boolean onboarding = onboardingConcluido();
         long consentimento = consentimentoLocalizacaoEm();

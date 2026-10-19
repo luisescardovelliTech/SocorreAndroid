@@ -27,7 +27,6 @@ import javax.inject.Singleton;
 
 import dagger.hilt.android.qualifiers.ApplicationContext;
 
-/** Fused Location Provider: posição para alertas (melhor esforço) e atualizações de trajeto. */
 @Singleton
 public class GerenciadorLocalizacao {
 
@@ -46,10 +45,7 @@ public class GerenciadorLocalizacao {
         this.cliente = cliente;
     }
 
-    /**
-     * Melhor localização disponível dentro do prazo. Bloqueante: nunca chamar na thread principal.
-     * @return nulo se não houver permissão ou nenhuma posição conhecida.
-     */
+    // usa a ultima localizacao se for recente, senao pede uma nova
     @WorkerThread
     @SuppressLint("MissingPermission")
     @Nullable

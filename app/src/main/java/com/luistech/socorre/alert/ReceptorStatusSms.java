@@ -17,7 +17,6 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/** Recebe da operadora o resultado de cada SMS e registra em evento.envios.sms. */
 @AndroidEntryPoint(BroadcastReceiver.class)
 public class ReceptorStatusSms extends Hilt_ReceptorStatusSms {
 
@@ -41,7 +40,7 @@ public class ReceptorStatusSms extends Hilt_ReceptorStatusSms {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        super.onReceive(context, intent); // injeção do Hilt
+        super.onReceive(context, intent);
         String uid = intent.getStringExtra(EXTRA_UID);
         String eventoId = intent.getStringExtra(EXTRA_EVENTO);
         String telefone = intent.getStringExtra(EXTRA_TELEFONE);

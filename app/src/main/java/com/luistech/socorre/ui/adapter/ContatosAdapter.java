@@ -15,7 +15,6 @@ import com.luistech.socorre.util.Formatos;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Lista de contatos com botões explícitos (subir/descer) em vez de arrastar: acessível e usável com luvas. */
 public class ContatosAdapter extends RecyclerView.Adapter<ContatosAdapter.Vh> {
 
     public interface Acoes {

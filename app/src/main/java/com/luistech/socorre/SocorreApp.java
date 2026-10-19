@@ -17,10 +17,6 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.HiltAndroidApp;
 
-/**
- * Hilt sem o plugin Gradle: a classe estende a gerada Hilt_SocorreApp (o Android Studio
- * mostra erro até o primeiro build, que gera a classe).
- */
 @HiltAndroidApp(Application.class)
 public class SocorreApp extends Hilt_SocorreApp implements Configuration.Provider {
 
@@ -43,7 +39,6 @@ public class SocorreApp extends Hilt_SocorreApp implements Configuration.Provide
         }
     }
 
-    /** OpenStreetMap: identificação exigida pela política de uso dos tiles e cache no armazenamento do app. */
     private void configurarMapa() {
         org.osmdroid.config.IConfigurationProvider osm = org.osmdroid.config.Configuration.getInstance();
         osm.load(this, getSharedPreferences("osmdroid", MODE_PRIVATE));
@@ -53,7 +48,6 @@ public class SocorreApp extends Hilt_SocorreApp implements Configuration.Provide
         osm.setOsmdroidTileCache(new java.io.File(base, "tiles"));
     }
 
-    /** Falso enquanto o google-services.json não for adicionado (ver README). */
     public static boolean firebaseConfigurado(Context c) {
         return !FirebaseApp.getApps(c).isEmpty();
     }

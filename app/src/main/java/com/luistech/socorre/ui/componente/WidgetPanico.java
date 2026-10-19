@@ -8,10 +8,6 @@ import android.widget.RemoteViews;
 import com.luistech.socorre.R;
 import com.luistech.socorre.util.Notificacoes;
 
-/**
- * Widget de pânico na tela inicial. Um toque abre a contagem regressiva (que pode ser
- * cancelada), já que o widget não permite exigir "segurar por 3 s".
- */
 public class WidgetPanico extends AppWidgetProvider {
 
     @Override

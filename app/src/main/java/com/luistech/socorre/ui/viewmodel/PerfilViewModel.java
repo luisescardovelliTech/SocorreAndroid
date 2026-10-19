@@ -35,7 +35,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext;
 @HiltViewModel
 public class PerfilViewModel extends ViewModel {
 
-    /** Dados do formulário. */
     public static final class Formulario {
         public String nome;
         public String telefone;
@@ -96,10 +95,6 @@ public class PerfilViewModel extends ViewModel {
         return foto;
     }
 
-    /**
-     * Copia a foto escolhida para o armazenamento interno do app. A foto fica só no aparelho:
-     * o Cloud Storage exige o plano Blaze (ver README).
-     */
     public void definirFoto(Uri origem) {
         executor.execute(() -> {
             File destino = new File(contexto.getFilesDir(), "foto_perfil.jpg");
@@ -120,7 +115,6 @@ public class PerfilViewModel extends ViewModel {
         repo.carregarUsuario().addOnCompleteListener(t -> {
             Usuario u = t.isSuccessful() ? t.getResult() : null;
             if (u == null) {
-                // Sem rede e sem cache: usa o que há localmente.
                 u = new Usuario();
                 u.nome = prefs.nomeUsuario();
                 u.telefone = prefs.telefoneUsuario();
@@ -147,7 +141,6 @@ public class PerfilViewModel extends ViewModel {
             Date anterior = atual != null && atual.fichaMedica != null ? atual.fichaMedica.consentimentoEm : null;
             ficha.consentimentoEm = anterior != null ? anterior : new Date();
         }
-        // Escritas offline ficam no cache local; o cache do SMS é atualizado na hora.
         Task<Void> perfil = repo.salvarPerfil(f.nome.trim(), telefone, f.dataNascimento, f.fotoUrl, f.perfil.name());
         Task<Void> fichaTask = repo.salvarFichaMedica(ficha);
         mensagem.setValue(new EventoUnico<>(R.string.msg_perfil_salvo));

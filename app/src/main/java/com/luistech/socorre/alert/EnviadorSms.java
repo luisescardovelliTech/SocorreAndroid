@@ -19,7 +19,6 @@ import javax.inject.Singleton;
 
 import dagger.hilt.android.qualifiers.ApplicationContext;
 
-/** Envio de SMS. Não depende de internet. Confirmações chegam no ReceptorStatusSms. */
 @Singleton
 public class EnviadorSms {
 
@@ -31,7 +30,7 @@ public class EnviadorSms {
         this.contexto = contexto;
     }
 
-    /** Envia para todos os contatos (em ordem de prioridade) e devolve o status do canal. */
+    // manda o sms para todos os contatos
     public Envios.Sms enviar(List<ContatoEmergencia> contatos, String mensagem, String uid, String eventoId) {
         Envios.Sms resultado = new Envios.Sms();
         if (contatos == null || contatos.isEmpty()) {
@@ -49,7 +48,6 @@ public class EnviadorSms {
             try {
                 ArrayList<PendingIntent> confirmacoes = new ArrayList<>();
                 PendingIntent pi = ReceptorStatusSms.intencao(contexto, uid, eventoId, telefone, i);
-                // Basta acompanhar a última parte: ela só sai depois das anteriores.
                 for (int p = 0; p < partes.size(); p++) confirmacoes.add(p == partes.size() - 1 ? pi : null);
                 sms.sendMultipartTextMessage(telefone, null, partes, confirmacoes, null);
                 resultado.enviadosPara.add(telefone);
@@ -64,7 +62,6 @@ public class EnviadorSms {
         return resultado;
     }
 
-    /** RF10: SMS de teste para conferir o número do contato. */
     public boolean enviarTeste(String telefone, String mensagem) {
         if (!GerenciadorPermissoes.temSms(contexto)) return false;
         try {

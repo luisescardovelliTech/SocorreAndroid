@@ -17,7 +17,6 @@ import javax.inject.Singleton;
 
 import retrofit2.Response;
 
-/** Clima atual via Open-Meteo (sem chave) com cache de ~30 min. Falha devolve nulo e o trajeto segue. */
 @Singleton
 public class ServicoClima {
 
@@ -25,7 +24,6 @@ public class ServicoClima {
     private static final float CACHE_RAIO_M = 10_000;
     private static final String CAMPOS = "temperature_2m,precipitation,weather_code,wind_speed_10m";
 
-    /** Formato do cache local. */
     static class Cache {
         Clima clima;
         double lat;
@@ -42,6 +40,7 @@ public class ServicoClima {
         this.prefs = prefs;
     }
 
+    // busca o clima atual no open-meteo (guarda 30 min)
     @WorkerThread
     @Nullable
     public Clima obter(double lat, double lng) {
@@ -65,7 +64,6 @@ public class ServicoClima {
         }
     }
 
-    /** Temperatura do cache recente, sem acessar a rede (usada no alerta). */
     @Nullable
     public Double temperaturaRecente() {
         Cache c = lerCache();

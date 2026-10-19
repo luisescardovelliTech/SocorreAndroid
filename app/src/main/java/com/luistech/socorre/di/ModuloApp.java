@@ -44,7 +44,6 @@ public final class ModuloApp {
     @Singleton
     static FirebaseFirestore firestore() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        // Cache persistente explícito: histórico offline e escritas enfileiradas sem rede.
         db.setFirestoreSettings(new FirebaseFirestoreSettings.Builder()
                 .setLocalCacheSettings(PersistentCacheSettings.newBuilder().build())
                 .build());
@@ -63,7 +62,6 @@ public final class ModuloApp {
         return LocationServices.getFusedLocationProviderClient(contexto);
     }
 
-    /** Executor para disco/rede fora da thread principal. */
     @Provides
     @Singleton
     static ExecutorService executor() {
@@ -84,7 +82,6 @@ public final class ModuloApp {
     @Provides
     @Singleton
     static ApiEventos apiEventos(OkHttpClient cliente) {
-        // A URL completa vem do BuildConfig via @Url (API sem autenticação).
         return new Retrofit.Builder()
                 .baseUrl("https://ideaberta.com.br/")
                 .client(cliente)

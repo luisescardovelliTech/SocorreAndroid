@@ -21,7 +21,6 @@ import com.luistech.socorre.ui.activity.AlertaEnviadoActivity;
 import com.luistech.socorre.ui.activity.ContagemActivity;
 import com.luistech.socorre.ui.activity.MainActivity;
 
-/** Canais e construção de todas as notificações do app. */
 public final class Notificacoes {
 
     public static final String CANAL_MONITORAMENTO = "monitoramento";
@@ -44,7 +43,6 @@ public final class Notificacoes {
                 c.getString(R.string.canal_monitoramento), NotificationManager.IMPORTANCE_LOW);
         NotificationChannel emergencia = new NotificationChannel(CANAL_EMERGENCIA,
                 c.getString(R.string.canal_emergencia), NotificationManager.IMPORTANCE_HIGH);
-        // Som e vibração da emergência são controlados pelo AlarmeSonoro (volume crescente).
         emergencia.setSound(null, null);
         emergencia.enableVibration(false);
         emergencia.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
@@ -102,7 +100,6 @@ public final class Notificacoes {
                         ReceptorAcoes.intencao(c, ReceptorAcoes.ACAO_CANCELAR))
                 .addAction(R.drawable.ic_notif_alerta, c.getString(R.string.contagem_pedir_ajuda),
                         ReceptorAcoes.intencao(c, ReceptorAcoes.ACAO_ENVIAR_AGORA));
-        // Android 14+: tela cheia pode estar negada; nesse caso fica a notificação de prioridade máxima.
         if (GerenciadorPermissoes.podeTelaCheia(c)) b.setFullScreenIntent(abrir, true);
         return b.build();
     }
@@ -147,7 +144,6 @@ public final class Notificacoes {
                 .build();
     }
 
-    /** Publica sem nunca lançar exceção (permissão de notificação pode estar negada). */
     @SuppressLint("MissingPermission")
     public static void mostrar(Context c, int id, Notification n) {
         if (!GerenciadorPermissoes.temNotificacoes(c)) return;

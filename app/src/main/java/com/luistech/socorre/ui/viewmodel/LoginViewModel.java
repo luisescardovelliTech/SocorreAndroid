@@ -27,7 +27,6 @@ public class LoginViewModel extends ViewModel {
 
     public enum Destino { PERFIL, INICIO }
 
-    /** Erros de validação por campo (recurso de string ou 0). */
     public static final class ErrosCampos {
         public final int email;
         public final int senha;
@@ -106,7 +105,7 @@ public class LoginViewModel extends ViewModel {
             mensagem.setValue(new EventoUnico<>(erroAuth(t.getException())));
             return;
         }
-        repo.garantirDocumento(); // não aguarda: offline a escrita fica na fila do Firestore
+        repo.garantirDocumento();
         repo.carregarContatos()
                 .continueWithTask(x -> repo.carregarUsuario())
                 .addOnCompleteListener(u -> {

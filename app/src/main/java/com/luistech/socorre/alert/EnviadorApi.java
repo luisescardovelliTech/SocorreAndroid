@@ -18,10 +18,6 @@ import javax.inject.Singleton;
 
 import dagger.hilt.android.qualifiers.ApplicationContext;
 
-/**
- * Enfileira o envio para a API no WorkManager. A fila é persistida em disco, então o pedido
- * sobrevive a falta de internet, fechamento do app e reinício. Nunca bloqueia o SMS.
- */
 @Singleton
 public class EnviadorApi {
 
@@ -50,7 +46,6 @@ public class EnviadorApi {
                 .setInputData(dados)
                 .addTag("api_eventos")
                 .build();
-        // Nome único por evento: o mesmo alerta nunca é enfileirado duas vezes.
         WorkManager.getInstance(c).enqueueUniqueWork("api_" + eventoId, politica, req);
     }
 }

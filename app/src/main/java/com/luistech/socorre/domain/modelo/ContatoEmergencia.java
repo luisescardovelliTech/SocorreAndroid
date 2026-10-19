@@ -1,10 +1,8 @@
 package com.luistech.socorre.domain.modelo;
 
-/** users/{uid}/contatos/{contatoId}. Campos públicos para o Firestore. */
 public class ContatoEmergencia {
     public static final int MAXIMO = 5;
 
-    /** Id do documento (não é gravado como campo). */
     @com.google.firebase.firestore.Exclude
     public String id;
     public String nome;

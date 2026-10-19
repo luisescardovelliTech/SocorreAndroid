@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-/** Formatação para exibição em pt-BR. */
 public final class Formatos {
 
     public static final Locale PT_BR = new Locale("pt", "BR");
@@ -31,7 +30,6 @@ public final class Formatos {
         return h > 0 ? String.format(PT_BR, "%d:%02d:%02d", h, m, s) : String.format(PT_BR, "%02d:%02d", m, s);
     }
 
-    /** Telefone salvo só com dígitos → formato brasileiro para exibição (ou o original). */
     public static String telefone(String numero) {
         if (numero == null) return "";
         String d = numero.replaceAll("[^0-9]", "");
@@ -39,7 +37,6 @@ public final class Formatos {
                 ? com.luistech.socorre.domain.caso_de_uso.ValidadorTelefone.mascarar(numero) : numero;
     }
 
-    /** Aplica a máscara (DD) 99999-0000 no campo enquanto o usuário digita. */
     public static void mascararTelefone(android.widget.EditText campo) {
         campo.addTextChangedListener(new android.text.TextWatcher() {
             private boolean editando;

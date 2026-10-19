@@ -31,10 +31,6 @@ import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/**
- * Tela 5 - Contatos de emergência (1 a 5). A importação usa o seletor do sistema, que só
- * libera o contato escolhido: não pedimos acesso à agenda inteira (READ_CONTACTS).
- */
 @AndroidEntryPoint(Fragment.class)
 public class ContatosFragment extends Hilt_ContatosFragment implements ContatosAdapter.Acoes {
 

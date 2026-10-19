@@ -19,7 +19,6 @@ import com.luistech.socorre.util.Formatos;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/** Tela 7 - Trajeto ativo: distância, tempo, velocidade, check-in e pânico. */
 @AndroidEntryPoint(Fragment.class)
 public class TrajetoAtivoFragment extends Hilt_TrajetoAtivoFragment {
 

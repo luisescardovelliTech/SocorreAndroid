@@ -34,7 +34,6 @@ import java.util.TimeZone;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/** Tela 4 - Perfil e ficha médica (com consentimento explícito para dados de saúde). */
 @AndroidEntryPoint(Fragment.class)
 public class PerfilFragment extends Hilt_PerfilFragment {
 
@@ -58,7 +57,6 @@ public class PerfilFragment extends Hilt_PerfilFragment {
     @Override
     public void onViewCreated(@NonNull View v, @Nullable Bundle s) {
         vm = new ViewModelProvider(this).get(PerfilViewModel.class);
-        // Máscara brasileira enquanto digita, ex.: (18) 99999-0000
         com.luistech.socorre.util.Formatos.mascararTelefone(b.campoTelefone);
         boolean inicial = Navegacao.emConfigInicial(this);
         b.botaoSalvar.setText(inicial ? R.string.acao_continuar : R.string.acao_salvar);

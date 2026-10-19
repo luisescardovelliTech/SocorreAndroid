@@ -1,6 +1,5 @@
 package com.luistech.socorre.detection;
 
-/** Buffer circular de tamanho fixo. Índice 0 = item mais antigo. Não é thread-safe. */
 public class BufferCircular<T> {
     private final Object[] itens;
     private int inicio;

@@ -59,7 +59,6 @@ public class DetalheViewModel extends ViewModel {
         if (carregado || uid == null || id == null) return;
         carregado = true;
         if (TIPO_EVENTO.equals(tipo)) {
-            // Ao vivo: mostra a evolução dos envios (confirmações de SMS, tentativas da API).
             ouvinte = eventos.ouvir(uid, id, (d, e) -> {
                 if (d != null && d.exists()) evento.setValue(converter(d));
             });

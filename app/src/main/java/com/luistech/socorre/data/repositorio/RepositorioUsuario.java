@@ -31,7 +31,6 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-/** Conta, perfil, ficha médica e contatos. Toda escrita também atualiza o cache local. */
 @Singleton
 public class RepositorioUsuario {
 
@@ -45,8 +44,6 @@ public class RepositorioUsuario {
         this.db = db;
         this.prefs = prefs;
     }
-
-    // ---------- Autenticação ----------
 
     @Nullable
     public String uid() {
@@ -75,8 +72,6 @@ public class RepositorioUsuario {
         prefs.limparDadosUsuario();
     }
 
-    // ---------- Documento do usuário ----------
-
     DocumentReference documento() {
         String uid = uid();
         if (uid == null) throw new IllegalStateException("Usuário não autenticado");
@@ -87,7 +82,6 @@ public class RepositorioUsuario {
         return documento().collection("contatos");
     }
 
-    /** Cria o documento no primeiro login, registrando o consentimento LGPD. */
     public Task<Void> garantirDocumento() {
         DocumentReference doc = documento();
         FirebaseUser u = auth.getCurrentUser();
@@ -131,7 +125,6 @@ public class RepositorioUsuario {
         return documento().set(dados, SetOptions.merge());
     }
 
-    /** Ficha nula = remover os dados médicos (revogação do consentimento). */
     public Task<Void> salvarFichaMedica(@Nullable FichaMedica ficha) {
         prefs.salvarFichaMedica(ficha != null && ficha.compartilharNosAlertas ? ficha : null);
         Map<String, Object> dados = new HashMap<>();
@@ -145,9 +138,6 @@ public class RepositorioUsuario {
         return documento().set(dados, SetOptions.merge());
     }
 
-    // ---------- Contatos ----------
-
-    /** Lê os contatos (servidor ou cache) e atualiza o cache local usado no SMS. */
     public Task<List<ContatoEmergencia>> carregarContatos() {
         return contatosRef().orderBy("prioridade").get().continueWith(t -> {
             List<ContatoEmergencia> lista = new ArrayList<>();
@@ -164,10 +154,6 @@ public class RepositorioUsuario {
         });
     }
 
-    /**
-     * Grava a lista inteira de contatos na ordem dada (prioridade = posição + 1).
-     * A lista é pequena (máx. 5), então reescrever tudo é mais simples que sincronizar diferenças.
-     */
     public Task<Void> salvarContatos(List<ContatoEmergencia> contatos, List<String> idsRemovidos) {
         if (contatos.size() > ContatoEmergencia.MAXIMO) {
             return Tasks.forException(new IllegalArgumentException("Máximo de " + ContatoEmergencia.MAXIMO + " contatos"));
@@ -184,9 +170,6 @@ public class RepositorioUsuario {
         return lote.commit();
     }
 
-    // ---------- Exclusão de conta (LGPD) ----------
-
-    /** Apaga subcoleções, documento e a conta. Pode exigir login recente (erro tratado na UI). */
     public Task<Void> excluirConta() {
         DocumentReference doc = documento();
         FirebaseUser usuario = auth.getCurrentUser();
@@ -207,7 +190,6 @@ public class RepositorioUsuario {
         return col.get().continueWithTask(t -> {
             WriteBatch lote = db.batch();
             QuerySnapshot q = t.getResult();
-            // ponytail: lote único (limite de 500 docs); paginar se o histórico crescer além disso
             List<QueryDocumentSnapshot> docs = q != null ? toList(q) : Collections.<QueryDocumentSnapshot>emptyList();
             for (QueryDocumentSnapshot d : docs) lote.delete(d.getReference());
             return lote.commit();

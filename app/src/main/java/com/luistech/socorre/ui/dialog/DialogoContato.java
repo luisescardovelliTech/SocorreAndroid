@@ -10,11 +10,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.luistech.socorre.R;
 import com.luistech.socorre.databinding.DialogContatoBinding;
 
-/** Diálogo de inclusão/edição de contato. Mantém-se aberto enquanto houver erro de validação. */
 public final class DialogoContato {
 
     public interface AoSalvar {
-        /** @return recurso de erro ou 0 se salvou. */
         int salvar(String nome, String telefone, String relacao);
     }
 
@@ -25,7 +23,7 @@ public final class DialogoContato {
                                @Nullable String relacao, boolean edicao, AoSalvar aoSalvar) {
         DialogContatoBinding b = DialogContatoBinding.inflate(LayoutInflater.from(c));
         b.campoNome.setText(nome);
-        com.luistech.socorre.util.Formatos.mascararTelefone(b.campoTelefone); // máscara antes do setText
+        com.luistech.socorre.util.Formatos.mascararTelefone(b.campoTelefone);
         b.campoTelefone.setText(telefone);
         b.campoRelacao.setText(relacao);
         AlertDialog d = new MaterialAlertDialogBuilder(c)

@@ -10,7 +10,6 @@ import com.luistech.socorre.domain.modelo.Clima;
 
 import org.junit.Test;
 
-/** Conversão da resposta do Open-Meteo (/v1/forecast?current=...). */
 public class ServicoClimaTest {
 
     private static JsonObject resposta(double temp, double vento, int codigo, double chuvaMm) {

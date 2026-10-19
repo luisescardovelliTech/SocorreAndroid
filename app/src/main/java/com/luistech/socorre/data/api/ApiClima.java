@@ -6,7 +6,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-/** Open-Meteo - tempo atual (https://open-meteo.com/en/docs). Gratuito e sem chave. */
 public interface ApiClima {
 
     @GET("v1/forecast")

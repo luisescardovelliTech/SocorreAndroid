@@ -36,19 +36,11 @@ import javax.inject.Singleton;
 
 import dagger.hilt.android.qualifiers.ApplicationContext;
 
-/**
- * Máquina de estados da emergência: OCIOSO → CONTANDO → ENVIANDO → ENVIADO → OCIOSO.
- *
- * A contagem roda aqui (e não na Activity) para continuar mesmo que a tela não abra,
- * esteja bloqueada ou seja fechada. Um wake lock parcial garante a CPU até o envio.
- * Todos os métodos públicos devem ser chamados na thread principal.
- */
 @Singleton
 public class ControladorEmergencia {
 
     public enum Fase { OCIOSO, CONTANDO, ENVIANDO, ENVIADO }
 
-    /** Estado imutável observado pela UI e pelo serviço. */
     public static final class Estado {
         public final Fase fase;
         public final int segundos;
@@ -124,7 +116,7 @@ public class ControladorEmergencia {
         return e != null ? e : new Estado(Fase.OCIOSO, 0, TipoEvento.QUEDA, false, null);
     }
 
-    /** Abre a contagem regressiva. Ignora se já houver uma emergência em andamento. */
+    // abre a contagem regressiva antes de enviar o alerta
     @MainThread
     public boolean iniciarContagem(TipoEvento tipo, @Nullable Leituras leituras, boolean teste) {
         if (!podeIniciar()) return false;
@@ -140,7 +132,6 @@ public class ControladorEmergencia {
         return true;
     }
 
-    /** Pânico confirmado (segurar 3 s): pula a contagem e envia na hora. */
     @MainThread
     public void dispararImediato(TipoEvento tipo, boolean teste) {
         if (!podeIniciar()) return;
@@ -150,16 +141,12 @@ public class ControladorEmergencia {
         enviarAgora();
     }
 
-    /**
-     * Só uma contagem/envio por vez. Um alerta já ENVIADO (mesmo sem o usuário tocar em "encerrar")
-     * não pode impedir um novo acidente de ser detectado.
-     */
     private boolean podeIniciar() {
         Fase f = atual().fase;
         return f == Fase.OCIOSO || f == Fase.ENVIADO;
     }
 
-    /** "ESTOU BEM": cancela e registra como falso positivo. */
+    // botao estou bem
     @MainThread
     public void cancelar() {
         Estado e = atual();
@@ -175,7 +162,7 @@ public class ControladorEmergencia {
         analytics.logEvent("falso_positivo", p);
     }
 
-    /** "PEDIR AJUDA AGORA" ou fim da contagem. */
+    // envia o alerta (sms + api)
     @MainThread
     public void enviarAgora() {
         Estado e = atual();
@@ -189,7 +176,6 @@ public class ControladorEmergencia {
             try {
                 evento = despachante.disparar(e.tipo, l, e.teste);
             } catch (Exception ex) {
-                // O despachante já isola cada canal; isto só protege contra erro inesperado.
                 Log.e(TAG, "erro inesperado no despacho", ex);
             }
             Evento finalEvento = evento;
@@ -204,7 +190,6 @@ public class ControladorEmergencia {
         liberarWakeLock();
     }
 
-    /** Usuário confirma que está seguro depois do alerta enviado. */
     @MainThread
     public void encerrar() {
         Estado e = atual();
@@ -231,7 +216,6 @@ public class ControladorEmergencia {
 
     private void prepararEmergencia() {
         adquirirWakeLock();
-        // Mantém o processo vivo com o serviço em primeiro plano durante a emergência.
         try {
             Intent i = new Intent(contexto, ServicoMonitoramento.class).setAction(ServicoMonitoramento.ACAO_EMERGENCIA);
             ContextCompat.startForegroundService(contexto, i);
@@ -244,7 +228,6 @@ public class ControladorEmergencia {
         try {
             contexto.startActivity(new Intent(contexto, tela).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         } catch (Exception ex) {
-            // Em segundo plano o Android pode bloquear; a notificação de tela cheia/alta prioridade cobre.
             Log.w(TAG, "abertura da tela bloqueada: " + tela.getSimpleName());
         }
     }

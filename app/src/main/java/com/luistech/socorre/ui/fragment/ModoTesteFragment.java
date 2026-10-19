@@ -17,10 +17,6 @@ import com.luistech.socorre.ui.viewmodel.EmergenciaViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/**
- * Tela 13 - Modo de teste: percorre todo o fluxo (contagem, cancelamento, processamento) sem
- * enviar SMS nem notificações reais. O evento fica marcado como teste e a API recebe "teste": true.
- */
 @AndroidEntryPoint(Fragment.class)
 public class ModoTesteFragment extends Hilt_ModoTesteFragment {
 

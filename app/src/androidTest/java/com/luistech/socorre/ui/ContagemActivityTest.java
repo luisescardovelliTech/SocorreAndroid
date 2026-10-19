@@ -26,10 +26,6 @@ import javax.inject.Inject;
 import dagger.hilt.android.testing.HiltAndroidRule;
 import dagger.hilt.android.testing.HiltAndroidTest;
 
-/**
- * Teste de UI da contagem regressiva em MODO DE TESTE (nada é enviado).
- * Requer o google-services.json configurado (o grafo do Hilt usa o Firebase).
- */
 @HiltAndroidTest
 public class ContagemActivityTest {
 

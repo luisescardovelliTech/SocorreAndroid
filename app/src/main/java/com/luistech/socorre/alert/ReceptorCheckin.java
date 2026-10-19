@@ -14,10 +14,6 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/**
- * Check-in de segurança: pergunta "Está tudo bem?"; sem resposta em 2 minutos, abre a
- * mesma contagem regressiva usada na detecção de queda.
- */
 @AndroidEntryPoint(BroadcastReceiver.class)
 public class ReceptorCheckin extends Hilt_ReceptorCheckin {
 
@@ -37,12 +33,12 @@ public class ReceptorCheckin extends Hilt_ReceptorCheckin {
         return PendingIntent.getBroadcast(c, acao.hashCode(), i, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
+    // perguntar, ok e prazo do check-in
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
         String acao = intent.getAction();
         if (acao == null) return;
-        // Sem trajeto/sessão ativa não há check-in.
         if (prefs.trajetoAtivoId() == null) {
             agendador.cancelarTudo();
             return;

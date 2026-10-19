@@ -33,7 +33,6 @@ import org.junit.Test;
 
 import java.util.Collections;
 
-/** Garante que nenhuma falha de canal impede os demais (seções 11 e 33 da especificação). */
 public class DespachanteAlertaTest {
 
     private Context contexto;
@@ -62,7 +61,7 @@ public class DespachanteAlertaTest {
                 new ContatoEmergencia("Bia", "18988880000", "filha", 1)));
         when(usuarios.uid()).thenReturn("uid1");
         when(eventos.novoId("uid1")).thenReturn("ev1");
-        when(localizacao.obterMelhorLocalizacao(anyLong())).thenReturn(null); // GPS indisponível
+        when(localizacao.obterMelhorLocalizacao(anyLong())).thenReturn(null);
         Envios.Sms enviado = new Envios.Sms();
         enviado.status = StatusEnvio.ENVIADO;
         when(sms.enviar(anyList(), anyString(), anyString(), anyString())).thenReturn(enviado);
@@ -92,7 +91,7 @@ public class DespachanteAlertaTest {
         verify(sms, never()).enviar(anyList(), anyString(), anyString(), anyString());
         assertEquals(StatusEnvio.SIMULADO, e.envios.sms.status);
         assertEquals(true, e.teste);
-        verify(api).enfileirar(eq("uid1"), eq("ev1"), anyString()); // modo de teste envia à API
+        verify(api).enfileirar(eq("uid1"), eq("ev1"), anyString());
     }
 
     @Test

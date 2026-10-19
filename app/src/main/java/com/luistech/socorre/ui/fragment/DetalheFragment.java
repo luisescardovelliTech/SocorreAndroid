@@ -39,7 +39,6 @@ import org.osmdroid.views.overlay.Polyline;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/** Tela 11 - Detalhe do trajeto (rota + eventos no mapa) ou do evento (leituras e envios). */
 @AndroidEntryPoint(Fragment.class)
 public class DetalheFragment extends Hilt_DetalheFragment {
 
@@ -67,8 +66,7 @@ public class DetalheFragment extends Hilt_DetalheFragment {
         b.mapa.setTileSource(TileSourceFactory.MAPNIK);
         b.mapa.setMultiTouchControls(true);
         b.mapa.getController().setZoom(4.0);
-        b.mapa.getController().setCenter(new GeoPoint(-15.8, -47.9)); // Brasil, até carregar os dados
-        // Arrastar o mapa não deve rolar a tela.
+        b.mapa.getController().setCenter(new GeoPoint(-15.8, -47.9));
         b.mapa.setOnTouchListener((x, ev) -> {
             x.getParent().requestDisallowInterceptTouchEvent(true);
             return false;

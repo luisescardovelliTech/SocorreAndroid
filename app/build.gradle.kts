@@ -4,14 +4,11 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
-// Firebase/Crashlytics só são aplicados quando o google-services.json existe,
-// assim o projeto continua compilando antes da configuração do Firebase.
 if (file("google-services.json").exists()) {
     apply(plugin = "com.google.gms.google-services")
     apply(plugin = "com.google.firebase.crashlytics")
 }
 
-// Segredos vêm do local.properties (fora do controle de versão).
 val segredos = Properties().apply {
     val arquivo = rootProject.file("local.properties")
     if (arquivo.exists()) arquivo.inputStream().use { load(it) }
@@ -33,7 +30,6 @@ android {
 
         testInstrumentationRunner = "com.luistech.socorre.ExecutorTestesHilt"
 
-        // API Socorro (pública, sem chave). Pode ser trocada no local.properties.
         val urlApi = segredo("API_URL_EVENTOS").ifEmpty { "https://ideaberta.com.br/socorro/" }
         buildConfigField("String", "API_URL_EVENTOS", "\"$urlApi\"")
     }
@@ -87,7 +83,7 @@ dependencies {
     implementation(libs.lifecycle.livedata)
     implementation(libs.lifecycle.viewmodel)
     implementation(libs.play.location)
-    implementation(libs.maps.utils) // só PolyUtil/LatLng (codificar a rota); não usa chave
+    implementation(libs.maps.utils)
     implementation(libs.osmdroid)
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
@@ -102,9 +98,7 @@ dependencies {
     androidTestAnnotationProcessor(libs.hilt.compiler)
 }
 
-// Hilt sem o plugin Gradle não convive bem com a compilação Java incremental: as classes Hilt_*
-// geradas somem entre builds e o projeto quebra com "cannot find symbol Hilt_...".
-// Compilar sempre por completo evita isso (o projeto é pequeno; custa poucos segundos).
+// sem isso o build quebra com "cannot find symbol Hilt_..."
 tasks.withType<JavaCompile>().configureEach {
     options.isIncremental = false
 }

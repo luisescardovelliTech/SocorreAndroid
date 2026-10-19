@@ -2,45 +2,22 @@ package com.luistech.socorre.detection;
 
 import com.luistech.socorre.domain.modelo.Leituras;
 
-/**
- * Motor de detecção de quedas. Java puro (sem classes Android) para ser testável com JUnit.
- *
- * Abre a análise com qualquer um destes sinais:
- *   1. caiu ou foi jogado: queda livre (>= 200 ms quase sem peso) seguida de um pouso de 1,3 g ou mais;
- *   2. girou: o aparelho deu uma volta completa (360°) em até 1 s;
- *   3. impacto forte: |a| >= limiar do perfil (+0,5 g se estiver no bolso).
- * A decisão sai 1 s depois (tempo de medir pico e giro), sem esperar o aparelho ficar parado:
- * quem filtra o alarme falso é a contagem regressiva com o botão "Estou bem".
- * No impacto forte sem queda livre nem giro ainda se exige rotação e, quando há GPS, a velocidade
- * mínima do perfil antes do impacto (moto), para buraco e pancada no bolso não dispararem.
- *
- * Tempos em milissegundos, todos na mesma base de relógio (timestamp dos sensores).
- * Não é thread-safe: chamar sempre da mesma thread.
- */
 public class DetectorQueda {
 
     public static final double GRAVIDADE = 9.81;
-    static final int CAPACIDADE_BUFFER = 200;          // ~4 s a 50 Hz
+    static final int CAPACIDADE_BUFFER = 200;
     static final double ACRESCIMO_BOLSO_G = 0.5;
-    /** Pausa após cada detecção, alerta ou "Estou bem", para o mesmo tombo não contar duas vezes. */
     public static final long SILENCIO_MS = 3_000;
-    /** Janela antes (contexto) e depois (pico e giro) do impacto. */
     static final long JANELA_MS = 1_000;
     static final double QUEDA_LIVRE_G = 0.5;
-    // ponytail: um pulo com o celular no bolso também tem 200 ms de queda livre e abre a contagem;
-    // aumentar para ~350 ms se os alarmes falsos incomodarem.
     static final long QUEDA_LIVRE_MIN_MS = 200;
-    /** Depois da queda livre, um pouso macio (cama, sofá, grama) já conta como impacto. */
     static final double IMPACTO_POS_QUEDA_LIVRE_G = 1.3;
-    /** Volta completa em até 1 s = aparelho girando (balançar para lá e para cá não soma). */
     static final double GIRO_DISPARO_GRAUS = 360;
     static final long VALIDADE_VELOCIDADE_MS = 10_000;
     static final double FATOR_REFORCO_ROTACAO = 0.75;
 
-    /** Resultado da última análise (para diagnóstico e calibração no aparelho). */
     public enum Motivo { NENHUM, CONFIRMADA, ROTACAO_BAIXA, VELOCIDADE_ANTES_BAIXA }
 
-    /** Fotografia do detector para a tela de diagnóstico. */
     public static final class Estado {
         public final boolean analisando;
         public final boolean emSilencio;
@@ -60,11 +37,9 @@ public class DetectorQueda {
         }
     }
 
-    /** Amostra combinada de acelerômetro + giroscópio. */
     static final class Amostra {
         final long t;
         final double ax, ay, az, g, giro;
-        /** Rotação feita nesta amostra (rad) em cada eixo, para somar a rotação líquida. */
         final double rx, ry, rz;
         final Double altitude;
 
@@ -95,7 +70,6 @@ public class DetectorQueda {
     private Double velocidadeKmh;
     private long velocidadeEm;
 
-    // Estado da análise em andamento
     private boolean emAnalise;
     private long tImpacto;
     private double picoG;
@@ -103,7 +77,6 @@ public class DetectorQueda {
     private Double altitudeAntes;
     private Double velocidadeAntes;
     private boolean quedaLivre;
-    /** Caiu/foi jogado de verdade: >= 200 ms em queda livre logo antes do impacto. */
     private boolean aparelhoCaiu;
     private boolean girou;
     private double[] vetorAntes;
@@ -130,7 +103,7 @@ public class DetectorQueda {
         this.velocidadeEm = t;
     }
 
-    /** Pausa curta após alerta ou "Estou bem". Usa o relógio dos próprios sensores. */
+    // pausa de 3s depois do alerta ou do estou bem
     public void iniciarSilencio() {
         if (tUltimaAmostra >= 0) silencioAte = tUltimaAmostra + SILENCIO_MS;
         emAnalise = false;
@@ -149,10 +122,7 @@ public class DetectorQueda {
         return perfil.impactoMinG + (bolsoCoberto ? ACRESCIMO_BOLSO_G : 0);
     }
 
-    /**
-     * Processa uma amostra (aceleração em m/s², giroscópio em rad/s).
-     * @return as leituras quando uma queda é confirmada; nulo caso contrário.
-     */
+    // recebe cada leitura do acelerometro e giroscopio e verifica se teve queda
     public Leituras processar(long t, double ax, double ay, double az, double gx, double gy, double gz) {
         double g = Math.sqrt(ax * ax + ay * ay + az * az) / GRAVIDADE;
         double giro = Math.sqrt(gx * gx + gy * gy + gz * gz);
@@ -195,7 +165,6 @@ public class DetectorQueda {
         aparelhoCaiu = t - fimQuedaLivre <= JANELA_MS;
         girou = girando;
 
-        // Olha o buffer anterior ao impacto: queda livre, rotação, altitude e orientação.
         double somaAlt = 0;
         int nAlt = 0;
         double sx = 0, sy = 0, sz = 0;
@@ -221,12 +190,13 @@ public class DetectorQueda {
             anterior = a.t;
         }
         vetorAntes = nVetor > 0 ? new double[]{sx / nVetor, sy / nVetor, sz / nVetor} : null;
-        // Atenção: Double.valueOf evita o unboxing de null no operador ternário (sem barômetro).
+        // Double.valueOf evita NullPointerException quando nao tem barometro
         altitudeAntes = nAlt > 0 ? Double.valueOf(somaAlt / nAlt) : altitudeAtual;
         velocidadeAntes = (velocidadeKmh != null && t - velocidadeEm <= VALIDADE_VELOCIDADE_MS
                 && velocidadeEm <= t) ? velocidadeKmh : null;
     }
 
+    // depois de 1s decide se confirma a queda
     private Leituras avaliar(long t) {
         Leituras r = new Leituras();
         r.picoG = arredondar(picoG);
@@ -242,9 +212,7 @@ public class DetectorQueda {
                 && r.variacaoAltitudeM <= -perfil.quedaAltitudeReforcoM);
         r.reforcoContexto = reforco;
 
-        // Caiu, foi jogado ou girou: o próprio movimento já é a evidência (vale em todos os perfis).
         if (!aparelhoCaiu && !girou) {
-            // Impacto forte: sem GPS não bloqueia; com GPS, o perfil pode exigir velocidade antes.
             if (r.velocidadeAntesKmh != null && perfil.velocidadeMinAntesKmh > 0
                     && r.velocidadeAntesKmh < perfil.velocidadeMinAntesKmh) {
                 ultimoResultado = Motivo.VELOCIDADE_ANTES_BAIXA;
@@ -261,7 +229,7 @@ public class DetectorQueda {
         return r;
     }
 
-    /** Rotação líquida (graus) no último segundo: girar soma, balançar para lá e para cá se cancela. */
+    // quanto o celular girou no ultimo segundo
     private double giroLiquidoGraus(long t) {
         double sx = 0, sy = 0, sz = 0;
         for (int i = buffer.tamanho() - 1; i >= 0; i--) {
@@ -274,7 +242,6 @@ public class DetectorQueda {
         return Math.toDegrees(Math.sqrt(sx * sx + sy * sy + sz * sz));
     }
 
-    /** Ângulo (graus) entre a gravidade antes do impacto e a média dos últimos 300 ms. */
     private double mudancaOrientacao(long t) {
         if (vetorAntes == null) return 0;
         double sx = 0, sy = 0, sz = 0;

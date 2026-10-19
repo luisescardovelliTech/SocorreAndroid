@@ -20,7 +20,6 @@ import com.luistech.socorre.ui.viewmodel.ConfiguracoesViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/** Tela 12 - Configurações, privacidade (LGPD) e conta. */
 @AndroidEntryPoint(Fragment.class)
 public class ConfiguracoesFragment extends Hilt_ConfiguracoesFragment {
 
@@ -37,7 +36,6 @@ public class ConfiguracoesFragment extends Hilt_ConfiguracoesFragment {
     public void onViewCreated(@NonNull View v, @Nullable Bundle s) {
         vm = new ViewModelProvider(this).get(ConfiguracoesViewModel.class);
 
-        // Sensibilidade (por perfil de atividade)
         b.textoSensibilidade.setText(getString(R.string.config_sensibilidade_perfil,
                 getString(InicioFragment.nomePerfil(vm.perfil()))));
         Sensibilidade sens = vm.sensibilidade();
@@ -49,7 +47,6 @@ public class ConfiguracoesFragment extends Hilt_ConfiguracoesFragment {
                     : id == R.id.botaoSensAlta ? Sensibilidade.ALTA : Sensibilidade.MEDIA);
         });
 
-        // Contagem regressiva 15-60 s
         b.sliderContagem.setValue(vm.contagemSeg());
         b.textoContagem.setText(getString(R.string.config_contagem_valor, vm.contagemSeg()));
         b.sliderContagem.addOnChangeListener((sl, valor, doUsuario) -> {
@@ -57,14 +54,12 @@ public class ConfiguracoesFragment extends Hilt_ConfiguracoesFragment {
             if (doUsuario) vm.definirContagemSeg((int) valor);
         });
 
-        // Check-in
         int ci = vm.intervaloCheckin();
         b.grupoCheckin.check(ci == 15 ? R.id.botaoCheckin15 : ci == 60 ? R.id.botaoCheckin60 : R.id.botaoCheckin30);
         b.grupoCheckin.addOnButtonCheckedListener((g, id, marcado) -> {
             if (marcado) vm.definirIntervaloCheckin(id == R.id.botaoCheckin15 ? 15 : id == R.id.botaoCheckin60 ? 60 : 30);
         });
 
-        // Mensagem do SMS
         b.campoMensagem.setText(vm.mensagemSms());
         b.botaoSalvarMensagem.setOnClickListener(x ->
                 vm.salvarMensagemSms(b.campoMensagem.getText() == null ? "" : b.campoMensagem.getText().toString()));
@@ -73,7 +68,6 @@ public class ConfiguracoesFragment extends Hilt_ConfiguracoesFragment {
             b.campoMensagem.setText(vm.mensagemSms());
         });
 
-        // Tema
         String tema = vm.modoTema();
         b.grupoTema.check(Preferencias.TEMA_SENSOR.equals(tema) ? R.id.radioTemaSensor
                 : Preferencias.TEMA_CLARO.equals(tema) ? R.id.radioTemaClaro
@@ -83,7 +77,6 @@ public class ConfiguracoesFragment extends Hilt_ConfiguracoesFragment {
                         : id == R.id.radioTemaClaro ? Preferencias.TEMA_CLARO
                         : id == R.id.radioTemaEscuro ? Preferencias.TEMA_ESCURO : Preferencias.TEMA_SISTEMA));
 
-        // Atalhos
         b.botaoPerfil.setOnClickListener(x -> Navegacao.ir(this, R.id.perfilFragment));
         b.botaoPermissoes.setOnClickListener(x -> Navegacao.ir(this, R.id.permissoesFragment));
         b.botaoModoTeste.setOnClickListener(x -> Navegacao.ir(this, R.id.modoTesteFragment));
@@ -94,7 +87,6 @@ public class ConfiguracoesFragment extends Hilt_ConfiguracoesFragment {
                 .setPositiveButton(R.string.acao_ok, null)
                 .show());
 
-        // Conta
         b.botaoSair.setOnClickListener(x -> new MaterialAlertDialogBuilder(requireContext())
                 .setTitle(R.string.conta_sair_titulo)
                 .setMessage(R.string.conta_sair_texto)

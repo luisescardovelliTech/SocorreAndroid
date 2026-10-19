@@ -21,11 +21,9 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
-/** Eventos e trajetos em uma linha do tempo. Os listeners servem o cache quando offline. */
 @HiltViewModel
 public class HistoricoViewModel extends ViewModel {
 
-    /** Item da lista: um evento ou um trajeto. */
     public static final class Item {
         public final Evento evento;
         public final Trajeto trajeto;

@@ -30,10 +30,6 @@ import java.util.function.BooleanSupplier;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/**
- * Tela 3 - Permissões. Cada cartão é a explicação prévia (em pt-BR) exibida ANTES do pedido
- * do sistema. Negar não bloqueia o app: a função correspondente fica reduzida.
- */
 @AndroidEntryPoint(Fragment.class)
 public class PermissoesFragment extends Hilt_PermissoesFragment {
 
@@ -135,7 +131,6 @@ public class PermissoesFragment extends Hilt_PermissoesFragment {
             Item item = (Item) filho.getTag();
             ItemPermissaoBinding ib = ItemPermissaoBinding.bind(filho);
             boolean ok = item.concedida.getAsBoolean();
-            // Estado em texto + ícone, nunca só por cor.
             ib.textoEstado.setText(ok ? R.string.perm_concedida : R.string.perm_pendente);
             ib.textoEstado.setCompoundDrawablesRelativeWithIntrinsicBounds(
                     ok ? R.drawable.ic_check : R.drawable.ic_aviso, 0, 0, 0);
@@ -150,7 +145,6 @@ public class PermissoesFragment extends Hilt_PermissoesFragment {
         pedirUma.launch(permissao);
     }
 
-    /** Negada sem nova chance de pedido: oferece abrir as configurações do app. */
     private void aposPedido() {
         atualizarEstados();
         if (ultimaPedida == null || b == null) return;
@@ -179,7 +173,7 @@ public class PermissoesFragment extends Hilt_PermissoesFragment {
     @Override
     public void onResume() {
         super.onResume();
-        atualizarEstados(); // volta das telas de configuração do sistema
+        atualizarEstados();
     }
 
     @Override

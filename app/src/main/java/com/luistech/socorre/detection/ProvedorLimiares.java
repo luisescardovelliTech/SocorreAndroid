@@ -13,11 +13,6 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-/**
- * Limiares por perfil, ajustáveis pelo Firebase Remote Config sem nova versão do app.
- * Chaves: deteccao_{perfil}_impacto_g e deteccao_{perfil}_rotacao_graus.
- * Valores inválidos (<= 0) caem nos padrões da especificação.
- */
 @Singleton
 public class ProvedorLimiares {
 

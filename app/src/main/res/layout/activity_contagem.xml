@@ -83,7 +83,6 @@
                 app:strokeColor="@color/sobre_emergencia"
                 app:strokeWidth="3dp" />
 
-            <!-- "Estou bem" embaixo: área de alcance do polegar, maior botão da tela. -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/botaoEstouBem"
                 style="@style/Widget.Socorre.Botao.Critico"

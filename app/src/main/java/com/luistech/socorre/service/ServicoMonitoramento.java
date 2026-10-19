@@ -49,11 +49,6 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/**
- * Serviço em primeiro plano: sensores + detector, GPS do trajeto e manutenção do processo
- * durante uma emergência. Sem código de UI. O Android ainda pode encerrá-lo em aparelhos com
- * otimização de bateria agressiva; o usuário é orientado na tela de Permissões.
- */
 @AndroidEntryPoint(Service.class)
 public class ServicoMonitoramento extends Hilt_ServicoMonitoramento {
 
@@ -95,7 +90,6 @@ public class ServicoMonitoramento extends Hilt_ServicoMonitoramento {
     private boolean monitorando;
     private ControladorEmergencia.Fase faseAnterior = ControladorEmergencia.Fase.OCIOSO;
 
-    // Trajeto em andamento (acessado só na thread de sensores)
     private String trajetoId;
     private long trajetoInicioMs;
     private final List<LatLng> pontos = new ArrayList<>();
@@ -104,7 +98,7 @@ public class ServicoMonitoramento extends Hilt_ServicoMonitoramento {
     private boolean recebendoGps;
     private double ultimaVelocidadeKmh;
     private long ultimoFixMs;
-    /** Atualiza tempo/velocidade na tela a cada 1 s, mesmo sem GPS (ex.: dentro de casa). */
+    // atualiza o tempo do trajeto a cada 1s
     private final Runnable relogioTrajeto = new Runnable() {
         @Override
         public void run() {
@@ -119,7 +113,6 @@ public class ServicoMonitoramento extends Hilt_ServicoMonitoramento {
         return MONITORANDO;
     }
 
-    /** Envia uma ação ao serviço (somente com o app em primeiro plano ou via PendingIntent). */
     public static void enviar(Context c, String acao) {
         Intent i = new Intent(c, ServicoMonitoramento.class).setAction(acao);
         if (ACAO_ATUALIZAR_PERFIL.equals(acao)) {
@@ -134,14 +127,12 @@ public class ServicoMonitoramento extends Hilt_ServicoMonitoramento {
                 || (faseAnterior != ControladorEmergencia.Fase.ENVIADO && e.fase == ControladorEmergencia.Fase.ENVIADO);
         faseAnterior = e.fase;
         if (terminou && handlerSensores != null) {
-            // Pausa de 3 s após alerta ou "Estou bem"; depois volta a detectar quantas vezes for preciso.
             handlerSensores.post(() -> {
                 if (coletor != null) coletor.detector().iniciarSilencio();
             });
         }
         if (terminou) {
             atualizarNotificacao();
-            // Só para em transição real (observeForever entrega o valor atual logo no onCreate).
             if (e.fase == ControladorEmergencia.Fase.OCIOSO) pararSeOcioso();
         }
     };
@@ -165,12 +156,10 @@ public class ServicoMonitoramento extends Hilt_ServicoMonitoramento {
 
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
-        // Toda chamada via startForegroundService precisa de startForeground em até 5 s.
         entrarEmPrimeiroPlano();
         String acao = intent != null ? intent.getAction() : null;
         Log.i(TAG, "acao=" + acao);
         if (acao == null) {
-            // Reiniciado pelo sistema (START_STICKY): restaura o estado salvo.
             if (prefs.monitoramentoAtivo()) iniciarMonitoramento();
             if (prefs.trajetoAtivoId() != null) iniciarTrajeto();
         } else {
@@ -215,13 +204,13 @@ public class ServicoMonitoramento extends Hilt_ServicoMonitoramento {
         try {
             ServiceCompat.startForeground(this, Notificacoes.ID_MONITORAMENTO, n, tipo);
         } catch (Exception e) {
-            // Ex.: localização "apenas durante o uso" com o app em segundo plano (Android 14+).
             Log.w(TAG, "startForeground com localizacao negado, tentando sem: " + e.getClass().getSimpleName());
             int semLocalizacao = Build.VERSION.SDK_INT >= 34 ? ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE : 0;
             ServiceCompat.startForeground(this, Notificacoes.ID_MONITORAMENTO, n, semLocalizacao);
         }
     }
 
+    // liga os sensores e comeca o monitoramento
     private void iniciarMonitoramento() {
         if (monitorando) return;
         SensorManager sm = getSystemService(SensorManager.class);
@@ -234,8 +223,6 @@ public class ServicoMonitoramento extends Hilt_ServicoMonitoramento {
             coletor = null;
             return;
         }
-        // ponytail: wake lock parcial contínuo garante amostragem com a tela desligada; trocar por
-        // sensor "wake-up" com batching se a meta de bateria (5%/h) não for atingida no aparelho.
         PowerManager pm = getSystemService(PowerManager.class);
         if (pm != null) {
             wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Socorre:monitoramento");
@@ -268,8 +255,6 @@ public class ServicoMonitoramento extends Hilt_ServicoMonitoramento {
         return limiares.perfil(perfil, prefs.sensibilidade(perfil));
     }
 
-    // ---------- Trajeto ----------
-
     private void iniciarTrajeto() {
         String id = prefs.trajetoAtivoId();
         if (id == null || id.equals(trajetoId)) return;
@@ -300,7 +285,7 @@ public class ServicoMonitoramento extends Hilt_ServicoMonitoramento {
         handlerSensores.post(() -> gravarTrajeto(id, new Date()));
     }
 
-    /** Thread de sensores. */
+    // guarda cada posicao do gps no trajeto
     private void registrarPosicao(Location l) {
         if (trajetoId == null) return;
         if (l.hasSpeed() && coletor != null) {
@@ -332,8 +317,6 @@ public class ServicoMonitoramento extends Hilt_ServicoMonitoramento {
         trajetos.publicarResumo(new RepositorioTrajetos.Resumo(id, distanciaM, duracao, velocidadeKmh,
                 distanciaM / duracao * 3.6, gps));
     }
-
-    // ---------- Ciclo de vida ----------
 
     private boolean emergenciaAtiva() {
         return controlador.atual().fase != ControladorEmergencia.Fase.OCIOSO;

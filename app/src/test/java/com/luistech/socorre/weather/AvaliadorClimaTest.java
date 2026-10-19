@@ -40,7 +40,6 @@ public class AvaliadorClimaTest {
 
     @Test
     public void codigosWmo() {
-        // Códigos WMO usados pelo Open-Meteo
         assertTrue(AvaliadorClima.codigoIndicaChuva(61));
         assertTrue(AvaliadorClima.codigoIndicaChuva(53));
         assertTrue(AvaliadorClima.codigoIndicaChuva(81));

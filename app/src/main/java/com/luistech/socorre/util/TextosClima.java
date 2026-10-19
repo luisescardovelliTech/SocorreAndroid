@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.luistech.socorre.R;
 
-/** Descrição em pt-BR do código de tempo WMO do Open-Meteo. */
 public final class TextosClima {
 
     private TextosClima() {

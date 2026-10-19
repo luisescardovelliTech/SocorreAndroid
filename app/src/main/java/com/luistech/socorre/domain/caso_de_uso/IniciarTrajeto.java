@@ -18,7 +18,6 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.qualifiers.ApplicationContext;
 
-/** Inicia/encerra o trajeto: documento no Firestore, check-ins e GPS no serviço. */
 public class IniciarTrajeto {
 
     public enum Resultado { OK, SEM_CONTATOS, SEM_LOGIN }
@@ -59,7 +58,6 @@ public class IniciarTrajeto {
         ServicoMonitoramento.enviar(contexto, ServicoMonitoramento.ACAO_PARAR_TRAJETO);
     }
 
-    /** Novo intervalo vale a partir de agora. */
     public void alterarIntervaloCheckin(int minutos) {
         prefs.definirIntervaloCheckinMin(minutos);
         if (prefs.trajetoAtivoId() == null) return;

@@ -24,13 +24,11 @@
         <item name="android:windowLightStatusBar">@bool/barra_clara</item>
     </style>
 
-    <!-- Contagem: fundo vermelho de emergência, alto contraste. -->
     <style name="Theme.Socorre.Emergencia" parent="Theme.Socorre">
         <item name="android:windowBackground">@color/emergencia</item>
         <item name="android:windowLightStatusBar">false</item>
     </style>
 
-    <!-- Tipografia com tamanhos em sp (acompanha a escala de fonte do sistema até 200%). -->
     <style name="TextAppearance.Socorre.Titulo" parent="TextAppearance.Material3.HeadlineSmall">
         <item name="android:textSize">26sp</item>
         <item name="android:textStyle">bold</item>
@@ -54,7 +52,6 @@
         <item name="android:textColor">@color/texto_secundario</item>
     </style>
 
-    <!-- Botões: mínimo 56dp (padrão) e 72dp (críticos), texto grande. -->
     <style name="Widget.Socorre.Botao" parent="Widget.Material3.Button">
         <item name="android:minHeight">@dimen/toque_padrao</item>
         <item name="android:textSize">18sp</item>

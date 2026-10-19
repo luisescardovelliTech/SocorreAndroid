@@ -7,7 +7,6 @@ import androidx.test.runner.AndroidJUnitRunner;
 
 import dagger.hilt.android.testing.HiltTestApplication;
 
-/** Runner de testes instrumentados com Hilt (configurado em testInstrumentationRunner). */
 public class ExecutorTestesHilt extends AndroidJUnitRunner {
 
     @Override

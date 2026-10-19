@@ -9,7 +9,6 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/** Botões "Estou bem" / "Pedir ajuda agora" da notificação de contagem. */
 @AndroidEntryPoint(BroadcastReceiver.class)
 public class ReceptorAcoes extends Hilt_ReceptorAcoes {
 

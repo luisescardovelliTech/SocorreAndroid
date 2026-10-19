@@ -2,10 +2,6 @@ package com.luistech.socorre.alert;
 
 import java.util.Map;
 
-/**
- * Monta o texto do SMS a partir de um modelo com marcadores {nome}, {situacao}, {tipo},
- * {dataHora} e {localizacao}. Java puro (testável); os textos vêm do strings.xml.
- */
 public final class MontadorMensagem {
 
     private MontadorMensagem() {
@@ -22,7 +18,6 @@ public final class MontadorMensagem {
         return texto.trim();
     }
 
-    /** Resume a ficha médica em uma linha, ignorando campos vazios. Nulo se tudo vazio. */
     public static String resumirFicha(String rotulo, String tipoSanguineo, String alergias,
                                       String medicamentos, String condicoes) {
         StringBuilder sb = new StringBuilder();

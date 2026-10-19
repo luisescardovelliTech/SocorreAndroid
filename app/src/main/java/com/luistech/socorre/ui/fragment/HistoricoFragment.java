@@ -19,7 +19,6 @@ import com.luistech.socorre.ui.viewmodel.HistoricoViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/** Tela 10 - Histórico de eventos e trajetos (disponível offline pelo cache do Firestore). */
 @AndroidEntryPoint(Fragment.class)
 public class HistoricoFragment extends Hilt_HistoricoFragment {
 

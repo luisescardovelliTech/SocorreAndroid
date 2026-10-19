@@ -17,7 +17,6 @@ import com.luistech.socorre.ui.viewmodel.LoginViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/** Tela 2 - Login e cadastro (e-mail e senha) e recuperação de senha. */
 @AndroidEntryPoint(Fragment.class)
 public class LoginFragment extends Hilt_LoginFragment {
 

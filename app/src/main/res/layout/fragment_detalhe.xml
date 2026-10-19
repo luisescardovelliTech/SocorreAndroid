@@ -19,7 +19,6 @@
             android:text="@string/detalhe_titulo"
             android:textAppearance="@style/TextAppearance.Socorre.Titulo" />
 
-        <!-- OpenStreetMap (osmdroid): sem chave de API. -->
         <org.osmdroid.views.MapView
             android:id="@+id/mapa"
             android:layout_width="match_parent"

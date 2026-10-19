@@ -18,7 +18,6 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
-/** Contagem regressiva, alerta enviado e modo de teste. */
 @HiltViewModel
 public class EmergenciaViewModel extends ViewModel {
 
@@ -61,7 +60,6 @@ public class EmergenciaViewModel extends ViewModel {
         controlador.encerrar();
     }
 
-    /** Acompanha o documento do evento para mostrar confirmações de SMS e tentativas da API. */
     public void acompanhar(Evento evento) {
         if (evento == null || evento.id == null) return;
         eventoAoVivo.setValue(evento);
@@ -79,7 +77,6 @@ public class EmergenciaViewModel extends ViewModel {
         });
     }
 
-    /** Modo de teste: nada real é enviado (SMS simulado; o registro vai para a API Socorro). */
     public void simular(TipoEvento tipo) {
         Leituras l = null;
         if (tipo == TipoEvento.QUEDA) {

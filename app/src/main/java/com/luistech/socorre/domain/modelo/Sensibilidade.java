@@ -1,9 +1,5 @@
 package com.luistech.socorre.domain.modelo;
 
-/**
- * Sensibilidade da detecção. O fator multiplica os limiares de impacto e rotação:
- * menor fator = limiares menores = detecta mais (e mais falsos positivos).
- */
 public enum Sensibilidade {
     BAIXA(1.20),
     MEDIA(1.00),

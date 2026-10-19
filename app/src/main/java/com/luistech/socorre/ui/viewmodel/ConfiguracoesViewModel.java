@@ -105,7 +105,6 @@ public class ConfiguracoesViewModel extends ViewModel {
         sincronizar();
     }
 
-    /** Modelo atual do SMS (personalizado ou padrão). */
     public String mensagemSms() {
         String m = prefs.mensagemSmsPersonalizada();
         return m != null ? m : contexto.getString(R.string.sms_modelo_padrao);
@@ -126,7 +125,6 @@ public class ConfiguracoesViewModel extends ViewModel {
         sincronizar();
     }
 
-    /** Copia as configurações para users/{uid}.config (backup; o app usa a cópia local). */
     private void sincronizar() {
         if (!usuarios.logado()) return;
         Map<String, Object> c = new HashMap<>();

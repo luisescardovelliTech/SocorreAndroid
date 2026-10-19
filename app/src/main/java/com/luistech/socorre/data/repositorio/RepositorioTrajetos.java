@@ -16,13 +16,11 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-/** Trajetos em users/{uid}/trajetos e o resumo ao vivo do trajeto em andamento. */
 @Singleton
 public class RepositorioTrajetos {
 
     private static final String TAG = "Socorre.Trajetos";
 
-    /** Resumo do trajeto ativo para a tela "Trajeto ativo" (nulo = nenhum trajeto). */
     public static class Resumo {
         public final String id;
         public final double distanciaM;
@@ -63,7 +61,6 @@ public class RepositorioTrajetos {
                 .addOnFailureListener(e -> Log.w(TAG, "trajeto.salvar falhou id=" + t.id, e));
     }
 
-    /** Atualização parcial durante o trajeto (polyline, distância...), enfileirada se offline. */
     public void atualizar(String uid, String id, String polyline, double distanciaM, long duracaoSeg,
                           double mediaKmh, java.util.Date fim) {
         Map<String, Object> campos = new HashMap<>();

@@ -31,10 +31,6 @@ import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/**
- * Tela 6 - Início. As duas ações críticas (monitoramento e pânico) ficam a UM toque/gesto.
- * Estado sempre em texto + ícone + cor (nunca só cor).
- */
 @AndroidEntryPoint(Fragment.class)
 public class InicioFragment extends Hilt_InicioFragment {
 
@@ -185,7 +181,6 @@ public class InicioFragment extends Hilt_InicioFragment {
             linhas.add(0, getString(R.string.clima_agora, TextosClima.descricao(requireContext(), p.clima.codigoTempo),
                     Math.round(p.clima.temperaturaC)));
         }
-        // Aviso de clima nunca impede o trajeto.
         new MaterialAlertDialogBuilder(requireContext())
                 .setTitle(R.string.clima_titulo_aviso)
                 .setMessage(android.text.TextUtils.join("\n\n", linhas))

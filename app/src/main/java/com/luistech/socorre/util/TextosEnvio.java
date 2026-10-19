@@ -6,7 +6,6 @@ import com.luistech.socorre.R;
 import com.luistech.socorre.domain.modelo.Envios;
 import com.luistech.socorre.domain.modelo.StatusEnvio;
 
-/** Textos (pt-BR) do status de cada canal de envio. */
 public final class TextosEnvio {
 
     private TextosEnvio() {

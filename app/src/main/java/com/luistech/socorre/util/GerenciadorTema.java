@@ -10,10 +10,6 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.luistech.socorre.data.local.Preferencias;
 
-/**
- * Tema: sistema, claro, escuro ou automático pelo sensor de luz ambiente.
- * No modo automático, histerese (10/40 lux) e intervalo mínimo evitam piscar.
- */
 public class GerenciadorTema implements SensorEventListener {
 
     private static final float ESCURO_LUX = 10f;
@@ -37,7 +33,6 @@ public class GerenciadorTema implements SensorEventListener {
                 noturno = AppCompatDelegate.MODE_NIGHT_YES;
                 break;
             case Preferencias.TEMA_SENSOR:
-                // Começa seguindo o sistema até a primeira leitura do sensor.
                 if (AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_UNSPECIFIED) return;
                 noturno = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
                 break;
@@ -49,7 +44,6 @@ public class GerenciadorTema implements SensorEventListener {
         AppCompatDelegate.setDefaultNightMode(noturno);
     }
 
-    /** Liga o sensor de luz (chamar em onResume quando o modo for SENSOR). */
     public boolean iniciar() {
         Sensor luz = sensores.getDefaultSensor(Sensor.TYPE_LIGHT);
         if (luz == null) return false;
@@ -76,6 +70,5 @@ public class GerenciadorTema implements SensorEventListener {
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int precisao) {
-        // não utilizado
     }
 }

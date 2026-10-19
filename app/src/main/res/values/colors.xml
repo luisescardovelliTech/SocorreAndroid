@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Contraste verificado para WCAG AA (texto normal >= 4,5:1).
-     Semântica: VERDE = monitoramento ativo, CINZA = pausado, VERMELHO = somente emergência. -->
 <resources>
     <color name="fundo">#F6F7F9</color>
     <color name="superficie">#FFFFFF</color>
@@ -9,7 +7,6 @@
     <color name="texto_secundario">#4B5563</color>
     <color name="contorno">#6B7280</color>
 
-    <!-- Destaque neutro (azul), nunca vermelho -->
     <color name="primaria">#1D4ED8</color>
     <color name="sobre_primaria">#FFFFFF</color>
     <color name="primaria_container">#DBEAFE</color>

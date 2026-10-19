@@ -8,19 +8,12 @@ import android.os.Handler;
 
 import com.luistech.socorre.domain.modelo.Leituras;
 
-/**
- * Ponte entre o SensorManager e o DetectorQueda. Todos os eventos chegam na thread do
- * Handler informado, que é a mesma usada para a velocidade do GPS (o detector não é thread-safe).
- * Sensores ausentes (giroscópio, barômetro, proximidade) apenas reduzem as evidências.
- */
 public class ColetorSensores implements SensorEventListener {
 
     public interface Ouvinte {
-        /** brusco = disparo do modo de teste "qualquer movimento brusco". */
         void aoConfirmarQueda(Leituras leituras, boolean brusco);
     }
 
-    /** Pico (g) que conta como movimento brusco no modo de teste. Calibre aqui se for sensível demais. */
     static final double LIMIAR_BRUSCO_G = 2.0;
     private static final long INTERVALO_BRUSCO_MS = 5_000;
     private java.util.function.BooleanSupplier modoBrusco = () -> false;
@@ -46,7 +39,6 @@ public class ColetorSensores implements SensorEventListener {
         barometro = sensores.getDefaultSensor(Sensor.TYPE_PRESSURE);
     }
 
-    /** ~50 Hz com SENSOR_DELAY_GAME (não exige a permissão HIGH_SAMPLING_RATE_SENSORS). */
     public boolean iniciar(Handler handler) {
         if (ativo) return true;
         if (acelerometro == null) return false;
@@ -71,6 +63,7 @@ public class ColetorSensores implements SensorEventListener {
         return detector;
     }
 
+    // manda as leituras dos sensores para o detector
     @Override
     public void onSensorChanged(SensorEvent e) {
         switch (e.sensor.getType()) {
@@ -109,6 +102,5 @@ public class ColetorSensores implements SensorEventListener {
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int precisao) {
-        // não utilizado
     }
 }

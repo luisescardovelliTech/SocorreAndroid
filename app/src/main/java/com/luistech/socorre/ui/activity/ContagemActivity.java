@@ -17,10 +17,6 @@ import com.luistech.socorre.ui.viewmodel.EmergenciaViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/**
- * Tela 8 - Contagem regressiva. Aparece sobre a tela de bloqueio. A contagem em si roda no
- * ControladorEmergencia: fechar esta tela não cancela o alerta.
- */
 @AndroidEntryPoint(AppCompatActivity.class)
 public class ContagemActivity extends Hilt_ContagemActivity {
 
@@ -80,7 +76,6 @@ public class ContagemActivity extends Hilt_ContagemActivity {
         }
     }
 
-    /** TalkBack: anuncia a cada 10 s e nos últimos 5 s, sem poluir a cada segundo. */
     private void anunciar(int segundos) {
         if (segundos == ultimoAnuncio) return;
         if (ultimoAnuncio == -1 || segundos % 10 == 0 || segundos <= 5) {

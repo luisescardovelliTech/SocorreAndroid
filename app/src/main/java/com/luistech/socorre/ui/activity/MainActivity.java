@@ -22,13 +22,11 @@ import javax.inject.Provider;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
-/** Activity única que hospeda a navegação. Sem regra de negócio. */
 @AndroidEntryPoint(AppCompatActivity.class)
 public class MainActivity extends Hilt_MainActivity {
 
     @Inject
     Preferencias prefs;
-    /** Provider: só cria o Firebase depois de confirmar que ele está configurado. */
     @Inject
     Provider<RepositorioUsuario> usuarios;
 
@@ -68,7 +66,6 @@ public class MainActivity extends Hilt_MainActivity {
         return R.id.inicioFragment;
     }
 
-    /** Atualiza o cache local (contatos, nome, ficha) usado pelo SMS offline. */
     private void sincronizar() {
         RepositorioUsuario repo = usuarios.get();
         repo.carregarUsuario();

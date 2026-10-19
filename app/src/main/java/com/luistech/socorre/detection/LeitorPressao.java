@@ -12,7 +12,6 @@ import androidx.annotation.WorkerThread;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-/** Uma leitura do barômetro (hPa) para o alerta. Nulo se o aparelho não tiver barômetro. */
 public final class LeitorPressao {
 
     private LeitorPressao() {
@@ -35,7 +34,6 @@ public final class LeitorPressao {
 
             @Override
             public void onAccuracyChanged(Sensor sensor, int precisao) {
-                // não utilizado
             }
         };
         sm.registerListener(ouvinte, s, SensorManager.SENSOR_DELAY_FASTEST);

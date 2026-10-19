@@ -30,7 +30,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 @HiltViewModel
 public class InicioViewModel extends ViewModel {
 
-    /** Resultado da checagem de clima antes do trajeto. */
     public static final class PreparoTrajeto {
         public final Clima clima;
         public final List<AvaliadorClima.Aviso> avisos;
@@ -41,7 +40,6 @@ public class InicioViewModel extends ViewModel {
         }
     }
 
-    /** Clima atual para o cartão da tela inicial: dados ou a mensagem do motivo de não ter. */
     public static final class EstadoClima {
         public final Clima clima;
         public final int mensagem;
@@ -119,7 +117,6 @@ public class InicioViewModel extends ViewModel {
         return climaAtual;
     }
 
-    /** Open-Meteo pela posição atual. O cache de 30 min evita chamadas repetidas ao voltar à tela. */
     public void atualizarClima() {
         if (buscandoClima) return;
         buscandoClima = true;
@@ -170,12 +167,10 @@ public class InicioViewModel extends ViewModel {
         monitoramento.atualizarPerfil();
     }
 
-    /** Botão de pânico segurado por 3 s: envia na hora. */
     public void panico() {
         controlador.dispararImediato(TipoEvento.PANICO, false);
     }
 
-    /** Busca localização e clima em segundo plano; falhas não impedem o trajeto. */
     public void prepararTrajeto() {
         if (!temContatos()) {
             mensagem.setValue(new EventoUnico<>(R.string.erro_sem_contatos));
@@ -188,7 +183,6 @@ public class InicioViewModel extends ViewModel {
                 Localizacao loc = localizacao.obterMelhorLocalizacao(5_000);
                 if (loc != null) c = clima.obter(loc.lat, loc.lng);
             } catch (Exception ignorada) {
-                // clima é opcional
             }
             preparando.postValue(false);
             preparo.postValue(new EventoUnico<>(new PreparoTrajeto(c, AvaliadorClima.avaliar(c))));
